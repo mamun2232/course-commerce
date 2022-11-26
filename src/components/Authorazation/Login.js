@@ -1,17 +1,59 @@
 import React from "react";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const Login = () => {
   const navigete = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const [signInWithEmailAndPassword, users, loading, errorss] =
+    useSignInWithEmailAndPassword(auth);
+  const [user, loadings, error] = useAuthState(auth);
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
+    fetch("http://localhost:5000/api/v1/user/login", {
+      method: "POST",
+      body: JSON.stringify({ email: data.email }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then(async (result) => {
+        console.log(data);
+        if (result.success) {
+          await signInWithEmailAndPassword(data.email, data.password);
+          // toast.success(data.message);
+          localStorage.setItem("Token", result?.token);
+          localStorage.setItem("userId", result.user._id);
+          // navigate("/login");
+        } else {
+          toast.error(data.message);
+        }
+      });
     console.log(data);
   };
+
+  if (user) {
+    navigate("/");
+  }
+
+  let errorMessage;
+  if (error) {
+    errorMessage = error?.message;
+    toast.error(errorMessage);
+  }
   return (
     <div className="my-5 container">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -30,8 +72,8 @@ const Login = () => {
                 type="email"
                 placeholder="Email"
                 className="EmailInput"
-                name="country"
-                id="country"
+                name="email"
+                id="email"
               />
               <label class="label">
                 {errors.email?.type === "required" && (
@@ -51,8 +93,8 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
                 className="EmailInput"
-                name="country"
-                id="country"
+                name="password"
+                id="password"
               />
               <label class="label">
                 {errors.password?.type === "required" && (

@@ -5,11 +5,12 @@ import cartReducer from "../Slice/cartSlice"
 import subtotalReduce from "../Slice/subTotalSlice"
 import shppingPriceReducer from "../Slice/shippingPriceSlice"
 import clientSecretReducer from "../Slice/clientScrect"
+import createUserReducer from "../Slice/createUserSlice"
 export default configureStore({
       reducer: {
           courses: coursesReducer,
           course: singleCourseReducer,
-          // user: createUserReducer,
+          user: createUserReducer,
           cart:  cartReducer,
           subTotal: subtotalReduce,
           shipping: shppingPriceReducer,

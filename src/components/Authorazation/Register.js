@@ -2,24 +2,83 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import auth from "../../firebase.init";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { updateProfile } from "firebase/auth";
 const Register = () => {
-  const navigete = useNavigate();
+  const [user, loadings, error] = useAuthState(auth);
+  const [createUserWithEmailAndPassword, Cuser, loading, Cerror] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, Uerror] = useUpdateProfile(auth);
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-      console.log(data);
-      if(data.password == data.confromPiassword){
-        toast.success("password carrect")
-      }
-      else{
-            toast.error("password not carrect")
-      }
     console.log(data);
+    if (data.password == data.confromPiassword) {
+      const name = `${data.fistName} ${data.lastName}`;
+      const userInfo = {
+        name,
+        email: data.email,
+      };
+
+      await createUserWithEmailAndPassword(data.email, data.password);
+      await updateProfile({ displayName: name });
+      fetch("http://localhost:5000/api/v1/user/register", {
+        method: "POST",
+        body: JSON.stringify(userInfo),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+
+          if (data.success) {
+            toast.success(data.message);
+            // navigate("/login");
+          }
+        });
+    } else {
+      toast.error("password not carrect");
+    }
   };
+
+  let errorMessage;
+  if (Cerror || Uerror) {
+    errorMessage = Cerror?.message || Uerror?.message 
+
+     toast.error(errorMessage)
+    
+  }
+
+  // if (Guser) {
+  //   const myForm = new FormData();
+  //   myForm.append("name", user?.displayName);
+  //   myForm.append("email", user?.email);
+  //   myForm.append("avatar", user?.photoURL);
+  //   myForm.append("cover", cover)
+  //   sendToken(myForm);
+  //   setToken(localStorage.getItem("UserToken"));
+  // }
+ 
+  if (user) {
+    navigate("/login");
+    // if(userId){
+    //   disPatch(fetchUserAvater(userId));
+
+    // }
+    
+  }
+
   return (
     <div className="my-5 container">
       <div className="card loginContainer shadow-sm mx-auto p-4 ">
@@ -159,7 +218,7 @@ const Register = () => {
 
       <p className="text-center mt-2">
         Already have an account?{" "}
-        <span onClick={() => navigete("/login")} className="text-primary">
+        <span onClick={() => navigate("/login")} className="text-primary">
           Login here
         </span>{" "}
       </p>
