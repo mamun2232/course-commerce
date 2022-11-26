@@ -26,6 +26,8 @@ const CourseDetails = () => {
     }
   };
 
+  console.log(course);
+
   const addedToCartHendeler = () => {
     const totalPrice =
       parseInt(quantity) * parseInt(course?.course?.course?.price);

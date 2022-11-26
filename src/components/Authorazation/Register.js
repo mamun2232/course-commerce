@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -6,11 +6,12 @@ import auth from "../../firebase.init";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { updateProfile } from "firebase/auth";
+
+import Loading from "../Utilites/Loading";
 const Register = () => {
+  const [agree, setAgree] = useState(false);
   const [user, loadings, error] = useAuthState(auth);
   const [createUserWithEmailAndPassword, Cuser, loading, Cerror] =
     useCreateUserWithEmailAndPassword(auth);
@@ -30,9 +31,7 @@ const Register = () => {
         email: data.email,
       };
 
-      await createUserWithEmailAndPassword(data.email, data.password);
-      await updateProfile({ displayName: name });
-      fetch("http://localhost:5000/api/v1/user/register", {
+      fetch("https://ancient-earth-39666.herokuapp.com/api/v1/user/register", {
         method: "POST",
         body: JSON.stringify(userInfo),
         headers: {
@@ -40,45 +39,44 @@ const Register = () => {
         },
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then(async (result) => {
+          console.log(result);
+          if (result.success) {
+            toast.success("User Signup Successfull");
 
-          if (data.success) {
-            toast.success(data.message);
+            await createUserWithEmailAndPassword(data.email, data.password);
+            await updateProfile({ displayName: name });
             // navigate("/login");
+            localStorage.setItem("Token", result?.token);
+            localStorage.setItem("userId", result.user._id);
+          } else {
+            toast.error(result.message);
           }
         });
     } else {
-      toast.error("password not carrect");
+      toast.error("Password dont Match");
     }
   };
 
   let errorMessage;
   if (Cerror || Uerror) {
-    errorMessage = Cerror?.message || Uerror?.message 
+    errorMessage = Cerror?.message || Uerror?.message;
 
-     toast.error(errorMessage)
-    
+    toast.error(errorMessage);
   }
 
-  // if (Guser) {
-  //   const myForm = new FormData();
-  //   myForm.append("name", user?.displayName);
-  //   myForm.append("email", user?.email);
-  //   myForm.append("avatar", user?.photoURL);
-  //   myForm.append("cover", cover)
-  //   sendToken(myForm);
-  //   setToken(localStorage.getItem("UserToken"));
-  // }
- 
+  if (loading || loadings) {
+    return <Loading />;
+  }
+
   if (user) {
-    navigate("/login");
+    navigate("/");
     // if(userId){
     //   disPatch(fetchUserAvater(userId));
 
     // }
-    
   }
-
+  console.log(agree);
   return (
     <div className="my-5 container">
       <div className="card loginContainer shadow-sm mx-auto p-4 ">
@@ -200,12 +198,21 @@ const Register = () => {
             </div>
 
             <div className="mt-2">
-              <input type="checkbox" name="" id="" />
-              <span> I accept the Terms of Condition & Privacy Policy</span>
+              <input
+                onClick={() => setAgree(!agree)}
+                type="checkbox"
+                name=""
+                id=""
+              />
+              <span className={`${agree ? "" : "text-danger"}`}>
+                {" "}
+                I accept the Terms of Condition & Privacy Policy
+              </span>
             </div>
             <div>
               <div className="mt-3">
                 <input
+                  disabled={!agree}
                   className="btn btn-primary px-5"
                   type="submit"
                   value="SingUp"

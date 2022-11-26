@@ -66,7 +66,7 @@ const CheckoutForm = () => {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url:
-          "https://fashion-ecommerce-92924.web.app/chackout/orderReview/payment/success",
+          "http://localhost:3000/myCart/chackout/review/payment/success",
         // receipt_email: email,
       },
     });

@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-
+import Loading from "../Utilites/Loading"
 const Login = () => {
   const navigete = useNavigate();
   const location = useLocation();
@@ -22,7 +22,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    fetch("http://localhost:5000/api/v1/user/login", {
+    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/user/login", {
       method: "POST",
       body: JSON.stringify({ email: data.email }),
       headers: {
@@ -39,19 +39,23 @@ const Login = () => {
           localStorage.setItem("userId", result.user._id);
           // navigate("/login");
         } else {
-          toast.error(data.message);
+          toast.error(result.message);
         }
       });
     console.log(data);
   };
 
+  if(loading || loadings){
+   return <Loading/>
+  }
+
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   let errorMessage;
-  if (error) {
-    errorMessage = error?.message;
+  if (error || errorss) {
+    errorMessage = error?.message || errorss?.message;
     toast.error(errorMessage);
   }
   return (
@@ -108,7 +112,7 @@ const Login = () => {
                 <input
                   className="btn btn-primary w-100"
                   type="submit"
-                  value="SingUp"
+                  value="Login"
                 />
               </div>
               <p className=" text-end text-primary mt-2">Forgate Password?</p>

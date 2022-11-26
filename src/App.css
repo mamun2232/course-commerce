@@ -42,8 +42,8 @@
 }
 .cards{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px ,1fr));
-  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px ,1fr));
+  grid-gap: 20px;
 }
 
 .subcribe{
@@ -174,4 +174,8 @@ justify-content: center;
   font-size: 15px;
   outline: none;
 
+}
+
+.cardImg{
+  height: 180px;
 }

@@ -8,7 +8,7 @@ const initistialcourseState = {
 }
 export const fetchSinglecourse = createAsyncThunk('/course/fetch' , (id) =>{
       if(id){
-            return axios.get(`http://localhost:5000/api/v1/courses/course/${id}`)
+            return axios.get(`https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`)
             .then((res) => res.data)
       }
       

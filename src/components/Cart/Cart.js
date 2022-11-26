@@ -35,7 +35,7 @@ const Cart = () => {
 
   const applayPromoCodeHendeler = () => {
     fetch(
-      `http://localhost:5000/api/v1/order/promo/?totalCost=${totalCost}&code=${promoCode}`,
+      `https://ancient-earth-39666.herokuapp.com/api/v1/order/promo/?totalCost=${totalCost}&code=${promoCode}`,
       {
         method: "POST",
         headers: {

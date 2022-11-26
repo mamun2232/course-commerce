@@ -13,19 +13,24 @@ import Cart from "./components/Cart/Cart";
 import Chackout from "./components/Cart/Chackout";
 import OrderReview from "./components/Cart/OrderReview";
 import Payment from "./components/Cart/Payment";
+import RequreAuth from "./components/Authorazation/RequreAuth";
+import PaymentSuccess from "./components/Cart/PaymentSuccess";
 function App() {
   return (
     <div className="">
       <Navber />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/course/details/:id" element={<CourseDetails />}></Route>
+        <Route path="/course/details/:id" element={ <RequreAuth>
+          <CourseDetails />
+        </RequreAuth>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signUp" element={<Register />}></Route>
         <Route path="/myCart" element={<Cart />}></Route>
         <Route path="/myCart/chackout" element={<Chackout />}></Route>
         <Route path="/myCart/chackout/review" element={<OrderReview/>}></Route>
         <Route path="/myCart/chackout/review/payment" element={<Payment/>}></Route>
+        <Route path="/myCart/chackout/review/payment/success" element={<PaymentSuccess/>}></Route>
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
     </div>
