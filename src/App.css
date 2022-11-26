@@ -137,7 +137,15 @@ justify-content: center;
   font-size: 15px;
   outline: none;
 }
-
+.loginInput{
+  width: 170px;
+  border: 1px solid rgb(207, 207, 204);
+  height: 40px;
+  border-radius: 6px;
+  padding: 2px 20px;
+  font-size: 15px;
+  outline: none;
+}
 .myButton{
   background-color: rgb(20, 92, 216);
   color: #fff;
@@ -145,5 +153,25 @@ justify-content: center;
   border-radius: 5px;
   border: none;
   padding: 7px 40px;
+
+}
+.inputGAp{
+  display: flex;
+  gap: 10px;
+}
+
+.loginContainer{
+  width: 400px;
+
+}
+
+.EmailInput{
+  width: 350px;
+  border: 1px solid rgb(207, 207, 204);
+  height: 40px;
+  border-radius: 6px;
+  padding: 2px 20px;
+  font-size: 15px;
+  outline: none;
 
 }

@@ -34,7 +34,7 @@ const Navber = () => {
             
             <span onClick={()=>navigate("/myCart")} className="myCart"><AiOutlineShoppingCart/></span>
             <span className="cartlength">{cart?.length}</span>
-            <Button onClick={()=> navigate("/singUp")} variant="outline-success">Sing Up</Button>
+            <Button onClick={()=> navigate("/signUp")} variant="outline-success">Sing Up</Button>
             <Button onClick={()=> navigate("/login")}  variant="outline-success">Login</Button>
           </div>
         </Navbar.Collapse>
