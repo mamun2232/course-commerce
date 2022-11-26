@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+import Home from "./components/Home/Home";
+import Navber from "./components/Home/Navber";
+import { Route, Routes } from "react-router-dom";
+import CourseDetails from "./components/Home/CourseDetails";
+import Login from "./components/Authorazation/Login";
+import Register from "./components/Authorazation/Register";
+import { Toaster } from "react-hot-toast";
+import Cart from "./components/Cart/Cart";
+import Chackout from "./components/Cart/Chackout";
+import OrderReview from "./components/Cart/OrderReview";
+import Payment from "./components/Cart/Payment";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Navber />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/course/details/:id" element={<CourseDetails />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signUp" element={<Register />}></Route>
+        <Route path="/myCart" element={<Cart />}></Route>
+        <Route path="/myCart/chackout" element={<Chackout />}></Route>
+        <Route path="/myCart/chackout/review" element={<OrderReview/>}></Route>
+        <Route path="/myCart/chackout/review/payment" element={<Payment/>}></Route>
+      </Routes>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 }

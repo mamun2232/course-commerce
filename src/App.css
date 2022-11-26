@@ -36,3 +36,114 @@
     transform: rotate(360deg);
   }
 }
+.cardTop{
+  height: 1px;
+  background-color: rgb(173, 199, 199);
+}
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px ,1fr));
+  grid-gap: 30px;
+}
+
+.subcribe{
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detals-card{
+  height: 600px;
+}
+
+.count{
+  width: 40px;
+  /* height: 8px; */
+  border: 1px solid rgb(219, 210, 210);
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadings{
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.myCart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
+  position: relative;
+}
+
+.cartlength{
+position: absolute;
+right: 235px;
+background-color: #282c34;
+color: azure;
+height: 15px;
+padding: 0px 2px;
+display: flex;
+align-items: center;
+border-radius: 5px;
+justify-content: center;
+}
+
+.inputFlied{
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 300px;
+}
+
+.delete-btn{
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.paymentStrip{
+ 
+  /* border: 1px solid gray; */
+  height: 35px;
+  /* align-items: center; */
+  
+}
+
+.personal{
+  background-color: rgb(20, 92, 216);
+  display: flex;
+ justify-content: center;
+ align-items: center;
+
+ border-radius: 5px;
+ padding: 10px;
+ color: aliceblue;
+}
+.label{
+  display: block;
+  margin-bottom: 3px;
+}
+.shippingInput{
+  width: 350px;
+  border: 1px solid rgb(207, 207, 204);
+  height: 40px;
+  border-radius: 10px;
+  padding: 2px 20px;
+  font-size: 15px;
+  outline: none;
+}
+
+.myButton{
+  background-color: rgb(20, 92, 216);
+  color: #fff;
+ font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  padding: 7px 40px;
+
+}

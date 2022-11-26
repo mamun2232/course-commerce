@@ -1,0 +1,47 @@
+[
+      {
+            "name": "Bangla Course",
+            "category": "education",
+            "price": 470,
+            "courseTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, dolor!",
+            "description": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo esse commodi doloremque culpa numquam voluptates eligendi, eius pariatur nesciunt suscipit molestiae eveniet, in omnis. Minus.",
+            "images": "https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg",
+            "Stock": 100
+      },
+      {
+            "name": "English Course",
+            "category": "education",
+            "price": 470,
+            "courseTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, dolor!",
+            "description": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo esse commodi doloremque culpa numquam voluptates eligendi, eius pariatur nesciunt suscipit molestiae eveniet, in omnis. Minus.",
+            "images": "https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg",
+            "Stock": 100
+      },
+      {
+            "name": "Math Course",
+            "category": "education",
+            "price": 470,
+            "courseTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, dolor!",
+            "description": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo esse commodi doloremque culpa numquam voluptates eligendi, eius pariatur nesciunt suscipit molestiae eveniet, in omnis. Minus.",
+            "images": "https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg",
+            "Stock": 100
+      },
+      {
+            "name": "Islam Course",
+            "category": "education",
+            "price": 470,
+            "courseTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, dolor!",
+            "description": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo esse commodi doloremque culpa numquam voluptates eligendi, eius pariatur nesciunt suscipit molestiae eveniet, in omnis. Minus.",
+            "images": "https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg",
+            "Stock": 100
+      },
+      {
+            "name": "Economic Course",
+            "category": "education",
+            "price": 470,
+            "courseTitle": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, dolor!",
+            "description": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo esse commodi doloremque culpa numquam voluptates eligendi, eius pariatur nesciunt suscipit molestiae eveniet, in omnis. Minus.",
+            "images": "https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg",
+            "Stock": 100
+      }
+]
