@@ -26,6 +26,7 @@ const Navber = () => {
             <Nav className="me-auto my-2 my-lg-0">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/course">Courses</Nav.Link>
+              <Nav.Link href="/dashboard">Dashbaord</Nav.Link>
               <Nav.Link href="#action2">Contact</Nav.Link>
               <Nav.Link href="#action2">Privacy Policy</Nav.Link>
               <Nav.Link href="#action2">Terms and Condation</Nav.Link>
