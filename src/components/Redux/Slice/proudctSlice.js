@@ -22,7 +22,7 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
   if (catagory == "All") {
     return axios
     .get(
-      `http://localhost:5000/api/v1/courses/course?category=${catagory}`,
+      `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course?category=${catagory}`,
       config
     )
     .then((res) => res.data);
