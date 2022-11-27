@@ -42,12 +42,12 @@ const Dashboard = () => {
             >
               <i class="fas fa-chart-line me-2"></i>My Profile
             </Link>
-            <a
-              href="#"
+            <Link
+              to="manageOrder"
               class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i class="fas fa-paperclip me-2"></i>Reports
-            </a>
+              <i class="fas fa-paperclip me-2"></i>Manage All Order
+            </Link>
             <a
               href="#"
               class="list-group-item list-group-item-action bg-transparent second-text fw-bold"

@@ -19,6 +19,8 @@ import Courses from "./components/Courses/Courses";
 import Dashboard from "./components/Dashboard/Dashboard";
 import MyOrder from "./components/Dashboard/MyOrder";
 import MyProfile from "./components/Dashboard/MyProfile";
+import ManageOrder from "./components/Dashboard/ManageOrder";
+import ManageOrderDetails from "./components/Dashboard/ManageOrderDetails";
 function App() {
   return (
     <div className="">
@@ -50,6 +52,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<MyOrder />} />
           <Route path="/dashboard/myProfile" element={<MyProfile />} />
+          <Route path="/dashboard/manageOrder" element={<ManageOrder />} />
+          <Route path="/dashboard/manageOrder/details/:id" element={<ManageOrderDetails />} />
         </Route>
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
