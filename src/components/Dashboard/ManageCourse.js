@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
+import { FaRegEdit } from "react-icons/fa";
+import { Navigate, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Loading from "../Utilites/Loading";
 
-const MyOrder = () => {
-  const [myOrder, setMyOrder] = useState([]);
+const ManageCourse = () => {
+  const [course, setCourse] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
     setLoading(true);
-    const userId = localStorage.getItem("userId");
-    fetch(`http://localhost:5000/api/v1/order/myOrder/${userId}   `)
+    fetch("http://localhost:5000/api/v1/courses/course")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setMyOrder(data?.order);
           setLoading(false);
-        } else {
-          setLoading(false);
+          setCourse(data.course);
         }
       });
   }, [show]);
 
-  if (loading) {
-    return <Loading />;
-  }
 
   const deleteHenedler = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/api/v1/order/${id}`, {
+    fetch(`http://localhost:5000/api/v1/courses/course/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
           swal({
-            title: "Order Delete Successfull",
+            title: "Course Delete Successfull",
             text: "Thank you Sir",
             icon: "success",
             buttons: [false],
@@ -49,35 +46,43 @@ const MyOrder = () => {
         }
       });
   };
+  if (loading) return <Loading />;
 
-  console.log(myOrder);
+  console.log(course);
   return (
-    <>
+    <div className="my-5">
       <div class="row my-5">
-        <h3 class="fs-4 mb-3">Recent My Orders</h3>
+        <h3 class="fs-4 mb-3">Manage Course</h3>
         <div class="col">
           <table class="table bg-white rounded shadow-sm  table-hover">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Quentity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Order Status</th>
+                <th scope="col">NAME</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">STOCK</th>
+                <th scope="col">DETAILS</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              {myOrder?.map((order) => {
-                return order?.orderItems?.map((myOrders) => (
-                  <tr key={myOrders?._id}>
-                    <th scope="row">{myOrders?.name}</th>
-                    <td>{myOrders?.quantity}</td>
-                    <td>{myOrders?.price}</td>
-                    <td>{myOrders?.totalPrice}</td>
-                    <td>{order?.orderStatus}</td>
-                    <td>
-                      <Modal show={show} onHide={handleClose}>
+              {course?.map((course) => (
+                <tr key={course?._id}>
+                  <th scope="row">{course?.name}</th>
+                  <td>{course?.category}</td>
+                  <td>{course?.price}</td>
+                  <td>{course?.Stock}</td>
+
+                  <td>
+                    <button
+                      onClick={() => navigate(`/course/details/${course?._id}`)}
+                      className="btn btn-warning"
+                    >
+                      Detalils
+                    </button>
+                  </td>
+                  <td>
+                  <Modal show={show} onHide={handleClose}>
                         <div className=" p-5">
                           <Modal.Title className="text-center">
                             Are You Sure Delete?
@@ -87,7 +92,7 @@ const MyOrder = () => {
                             <Button
                               // variant="secondary"
                               className="btn btn-warning px-5"
-                              onClick={() => deleteHenedler(order?._id)}
+                              onClick={() => deleteHenedler(course?._id)}
                             >
                               ok
                             </Button>
@@ -101,19 +106,22 @@ const MyOrder = () => {
          
         </Modal.Footer> */}
                       </Modal>
-                      <span onClick={() => handleShow()} className="delete-btn">
-                        <AiFillDelete />
-                      </span>
-                    </td>
-                  </tr>
-                ));
-              })}
+                    <span onClick={() => handleShow()}  className="delete-btn">
+                      <AiFillDelete />
+                    </span>
+
+                    <span className="delete-btn px-2">
+                      <FaRegEdit/>
+                    </span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default MyOrder;
+export default ManageCourse;

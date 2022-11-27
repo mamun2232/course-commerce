@@ -14,7 +14,7 @@ const Dashboard = () => {
     };
   }, []);
 
-    const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
   return (
     <>
       <div class="d-flex" id="wrapper">
@@ -48,36 +48,31 @@ const Dashboard = () => {
             >
               <i class="fas fa-paperclip me-2"></i>Manage All Order
             </Link>
-            <a
-              href="#"
+            <Link
+              to="manageCourse"
               class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i class="fas fa-shopping-cart me-2"></i>Store Mng
-            </a>
-            <a
-              href="#"
+              <i class="fas fa-shopping-cart me-2"></i>Manage All Course
+            </Link>
+            <Link
+              to="addCourse"
               class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i class="fas fa-gift me-2"></i>Products
-            </a>
-            <a
-              href="#"
+              <i class="fas fa-gift me-2"></i>Add Course
+            </Link>
+            <Link
+              to="user"
               class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             >
-              <i class="fas fa-comment-dots me-2"></i>Chat
-            </a>
-            <a
-              href="#"
-              class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i class="fas fa-map-marker-alt me-2"></i>Outlet
-            </a>
-            <a
+              <i class="fas fa-comment-dots me-2"></i>User
+            </Link>
+
+            <span
               href="#"
               class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             >
               <i class="fas fa-power-off me-2"></i>Logout
-            </a>
+            </span>
           </div>
         </div>
         {/* <!-- /#sidebar-wrapper -->
@@ -90,9 +85,9 @@ const Dashboard = () => {
                 class="fas fa-align-left primary-text fs-4 me-3"
                 id="menu-toggle"
               >
-               <GiHamburgerMenu/>
+                <GiHamburgerMenu />
               </i>
-              
+
               <h2 class="fs-2 m-0">Dashboard</h2>
             </div>
 
@@ -144,7 +139,7 @@ const Dashboard = () => {
           </nav>
 
           <div class="container-fluid px-4">
-          <Outlet />
+            <Outlet />
             {/* <div class="row g-3 my-2">
               <div class="col-md-3">
                 <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">

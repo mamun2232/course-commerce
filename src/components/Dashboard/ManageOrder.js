@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 import Loading from "../Utilites/Loading";
 
 const ManageOrder = () => {
   const [manageOrder, setManageOrder] = useState([]);
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
@@ -20,11 +25,31 @@ const ManageOrder = () => {
           setLoading(false);
         }
       });
-  }, []);
+  }, [show]);
 
   if (loading) {
     return <Loading />;
   }
+
+  const deleteHenedler = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/api/v1/order/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          swal({
+            title: "Order Delete Successfull",
+            text: "Thank you Sir",
+            icon: "success",
+            buttons: [false],
+          });
+          handleClose();
+        } else {
+        }
+      });
+  };
   return (
     <div className="my-5">
       <div class="row my-5">
@@ -68,7 +93,31 @@ const ManageOrder = () => {
                       </button>
                     </td>
                     <td>
-                      <span className="delete-btn">
+                    <Modal show={show} onHide={handleClose}>
+                        <div className=" p-5">
+                          <Modal.Title className="text-center">
+                            Are You Sure Delete?
+                          </Modal.Title>
+
+                          <div className=" d-flex justify-content-center mt-2">
+                            <Button
+                              // variant="secondary"
+                              className="btn btn-warning px-5"
+                              onClick={() => deleteHenedler(order?._id)}
+                            >
+                              ok
+                            </Button>
+                          </div>
+                        </div>
+                        {/* <Modal.Header closeButton> */}
+
+                        {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
+
+                        {/* <Modal.Footer>
+         
+        </Modal.Footer> */}
+                      </Modal>
+                      <span onClick={() => handleShow()} className="delete-btn">
                         <AiFillDelete />
                       </span>
                     </td>
