@@ -25,7 +25,7 @@ const Navber = () => {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#action1">Courses</Nav.Link>
+              <Nav.Link href="/course">Courses</Nav.Link>
               <Nav.Link href="#action2">Contact</Nav.Link>
               <Nav.Link href="#action2">Privacy Policy</Nav.Link>
               <Nav.Link href="#action2">Terms and Condation</Nav.Link>

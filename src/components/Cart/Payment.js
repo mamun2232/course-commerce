@@ -17,7 +17,7 @@ const Payment = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/order/create-payment-intent", {
+    fetch("http://localhost:5000/api/v1/order/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

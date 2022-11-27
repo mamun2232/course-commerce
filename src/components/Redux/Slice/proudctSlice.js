@@ -19,6 +19,14 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
       )
       .then((res) => res.data);
   }
+  if (catagory == "All") {
+    return axios
+    .get(
+      `http://localhost:5000/api/v1/courses/course?category=${catagory}`,
+      config
+    )
+    .then((res) => res.data);
+  }
   if (catagory) {
     // if(catagory == "Smart Hudi" || catagory == "Burka" || catagory == "Arabic Hijab" || catagory == "Saree" || catagory == "Shoe" || catagory == "Cosmatic" || catagory == "T-shirts"){
 
@@ -32,19 +40,15 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
     console.log(catagory);
     return axios
       .get(
-        `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course?category=${catagory}`,
+        `http://localhost:5000/api/v1/courses/course?category=${catagory}&kewword=${catagory}`,
         config
       )
       .then((res) => res.data);
   }
-  if (catagory === "all") {
-    return axios
-      .get("https://boiling-mesa-36077.herokuapp.com/product/get", config)
-      .then((res) => res.data);
-  }
+  
   return axios
     .get(
-      "https://ancient-earth-39666.herokuapp.com/api/v1/courses/course",
+      "http://localhost:5000/api/v1/courses/course",
       config
     )
     .then((res) => res.data);

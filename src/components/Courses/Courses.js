@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchCourse } from "../Redux/Slice/proudctSlice";
 import Loading from "../Utilites/Loading";
 
-const Course = () => {
+const Courses = () => {
   const navigate = useNavigate();
   const courses = useSelector((state) => state.courses);
   const [cetagory, setCetagory] = useState([]);
@@ -44,7 +44,6 @@ const Course = () => {
   };
   return (
     <div className="my-5">
-      <div className="cardTop"></div>
       <div className="container mt-5">
         <div className="card-section">
           <div className="car">
@@ -93,7 +92,7 @@ const Course = () => {
                   )}
                   {!courses.loading && !courses.error ? (
                     <>
-                      {courses?.courses?.course?.slice(0, 4).map((course) => (
+                      {courses?.courses?.course?.map((course) => (
                         // <courses key={courses._id} courses={courses}></courses>
                         <Card className="myCards" key={courses._id}>
                           <Card.Img
@@ -119,15 +118,6 @@ const Course = () => {
                     </>
                   ) : null}
                 </div>
-
-                <div className="mt-4 text-end">
-                  <button
-                    onClick={() => navigate("/course")}
-                    className="btn btn-warning px-4"
-                  >
-                    See All Course
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -137,4 +127,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default Courses;

@@ -178,4 +178,25 @@ justify-content: center;
 
 .cardImg{
   height: 180px;
+  
+}
+
+.myCards{
+  width: 250px;
+
+}
+
+.cursor-pointers{
+  cursor: pointer;
+}
+
+.searchBox{
+  border: 1px solid rgb(207, 207, 204);
+  height: 35px;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 15px;
+  outline: none;
+
+
 }

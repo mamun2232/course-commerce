@@ -15,12 +15,14 @@ import OrderReview from "./components/Cart/OrderReview";
 import Payment from "./components/Cart/Payment";
 import RequreAuth from "./components/Authorazation/RequreAuth";
 import PaymentSuccess from "./components/Cart/PaymentSuccess";
+import Courses from "./components/Courses/Courses";
 function App() {
   return (
     <div className="">
       <Navber />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/course" element={<Courses />}></Route>
         <Route path="/course/details/:id" element={ <RequreAuth>
           <CourseDetails />
         </RequreAuth>}></Route>
