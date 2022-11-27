@@ -10,7 +10,7 @@ const MyProfile = () => {
   useEffect(() => {
     setLodoing(true);
     const userId = localStorage.getItem("userId");
-    fetch(`http://localhost:5000/api/v1/user/single/${userId}`)
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/single/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

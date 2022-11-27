@@ -11,7 +11,7 @@ const User = () => {
   useEffect(() => {
     setLoading(true);
     //     const userId = localStorage.getItem("userId");
-    fetch(`http://localhost:5000/api/v1/user/user`)
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/user`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -21,7 +21,7 @@ const User = () => {
           setLoading(false);
         }
       });
-    fetch(`http://localhost:5000/api/v1/user/owner`)
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/owner`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -31,7 +31,7 @@ const User = () => {
           setLoading(false);
         }
       });
-    fetch(`http://localhost:5000/api/v1/user/adviser`)
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/adviser`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

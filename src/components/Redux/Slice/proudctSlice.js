@@ -40,7 +40,7 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
     console.log(catagory);
     return axios
       .get(
-        `http://localhost:5000/api/v1/courses/course?category=${catagory}&kewword=${catagory}`,
+        `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course?category=${catagory}&kewword=${catagory}`,
         config
       )
       .then((res) => res.data);
@@ -48,7 +48,7 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
   
   return axios
     .get(
-      "http://localhost:5000/api/v1/courses/course",
+      "https://ancient-earth-39666.herokuapp.com/api/v1/courses/course",
       config
     )
     .then((res) => res.data);

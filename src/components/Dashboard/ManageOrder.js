@@ -15,7 +15,7 @@ const ManageOrder = () => {
   const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/api/v1/order `)
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order `)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -33,7 +33,7 @@ const ManageOrder = () => {
 
   const deleteHenedler = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/api/v1/order/${id}`, {
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

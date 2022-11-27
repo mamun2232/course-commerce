@@ -16,7 +16,7 @@ const ManageCourse = () => {
   const handleShow = () => setShow(true);
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/api/v1/courses/course")
+    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/courses/course")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -29,7 +29,7 @@ const ManageCourse = () => {
 
   const deleteHenedler = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/api/v1/courses/course/${id}`, {
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
