@@ -53,65 +53,76 @@ const MyOrder = () => {
   console.log(myOrder);
   return (
     <>
-      <div class="row my-5">
-        <h3 class="fs-4 mb-3">Recent My Orders</h3>
-        <div class="col">
-          <table class="table bg-white rounded shadow-sm  table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Quentity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Order Status</th>
-                <th scope="col">Action</th>
+    { myOrder.length > 0 ?
+    <div class="row my-5">
+    <h3 class="fs-4 mb-3">Recent My Orders</h3>
+    <div class="col">
+      <table class="table bg-white rounded shadow-sm  table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Quentity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {myOrder?.map((order) => {
+            return order?.orderItems?.map((myOrders) => (
+              <tr key={myOrders?._id}>
+                <th scope="row">{myOrders?.name}</th>
+                <td>{myOrders?.quantity}</td>
+                <td>{myOrders?.price}</td>
+                <td>{myOrders?.totalPrice}</td>
+                <td>{order?.orderStatus}</td>
+                <td>
+                  <Modal show={show} onHide={handleClose}>
+                    <div className=" p-5">
+                      <Modal.Title className="text-center">
+                        Are You Sure Delete?
+                      </Modal.Title>
+
+                      <div className=" d-flex justify-content-center mt-2">
+                        <Button
+                          // variant="secondary"
+                          className="btn btn-warning px-5"
+                          onClick={() => deleteHenedler(order?._id)}
+                        >
+                          ok
+                        </Button>
+                      </div>
+                    </div>
+                    {/* <Modal.Header closeButton> */}
+
+                    {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
+
+                    {/* <Modal.Footer>
+     
+    </Modal.Footer> */}
+                  </Modal>
+                  <span onClick={() => handleShow()} className="delete-btn">
+                    <AiFillDelete />
+                  </span>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {myOrder?.map((order) => {
-                return order?.orderItems?.map((myOrders) => (
-                  <tr key={myOrders?._id}>
-                    <th scope="row">{myOrders?.name}</th>
-                    <td>{myOrders?.quantity}</td>
-                    <td>{myOrders?.price}</td>
-                    <td>{myOrders?.totalPrice}</td>
-                    <td>{order?.orderStatus}</td>
-                    <td>
-                      <Modal show={show} onHide={handleClose}>
-                        <div className=" p-5">
-                          <Modal.Title className="text-center">
-                            Are You Sure Delete?
-                          </Modal.Title>
+            ));
+          })}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  :
+  <div className=" card p-5 w-50 mx-auto">
 
-                          <div className=" d-flex justify-content-center mt-2">
-                            <Button
-                              // variant="secondary"
-                              className="btn btn-warning px-5"
-                              onClick={() => deleteHenedler(order?._id)}
-                            >
-                              ok
-                            </Button>
-                          </div>
-                        </div>
-                        {/* <Modal.Header closeButton> */}
+  <img src="/picture/order.gif" alt="" />
 
-                        {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
 
-                        {/* <Modal.Footer>
-         
-        </Modal.Footer> */}
-                      </Modal>
-                      <span onClick={() => handleShow()} className="delete-btn">
-                        <AiFillDelete />
-                      </span>
-                    </td>
-                  </tr>
-                ));
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+</div>
+    
+  }
+      
     </>
   );
 };

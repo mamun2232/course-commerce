@@ -59,10 +59,15 @@ const Cart = () => {
   const deleteCartItem = (id) => {
     disPatch(deleteToCart(id));
   };
+
+  console.log(cart);
   return (
     <div className="my-5">
       <div className="container">
-        <div className="row gx-5">
+
+        {
+          cart.length > 0 ?  
+          <div className="row gx-5">
           <div className="col-lg-8">
             {/* <p>Shopping Cart</p> */}
             <Table striped bordered hover>
@@ -157,6 +162,16 @@ const Cart = () => {
             </div>
           </div>
         </div>
+        :
+
+        <div className=" card p-5 w-50 mx-auto">
+
+          <img src="/picture/shoppingCArd.gif" alt="" />
+
+
+        </div>
+        }
+        
       </div>
     </div>
   );
