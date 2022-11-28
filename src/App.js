@@ -25,6 +25,7 @@ import ManageCourse from "./components/Dashboard/ManageCourse";
 import AddCourser from "./components/Dashboard/AddCourser";
 import User from "./components/Dashboard/User";
 import UpdateCourese from "./components/Dashboard/UpdateCourese";
+import RequreAdmin from "./components/Authorazation/RequreAdmin";
 function App() {
   return (
     <div className="">
@@ -53,15 +54,70 @@ function App() {
           path="/myCart/chackout/review/payment/success"
           element={<PaymentSuccess />}
         ></Route>
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequreAuth>
+              <Dashboard />
+            </RequreAuth>
+          }
+        >
           <Route index element={<MyOrder />} />
           <Route path="/dashboard/myProfile" element={<MyProfile />} />
-          <Route path="/dashboard/manageOrder" element={<ManageOrder />} />
-          <Route path="/dashboard/manageOrder/details/:id" element={<ManageOrderDetails />} />
-          <Route path="/dashboard/manageCourse" element={<ManageCourse />} />
-          <Route path="/dashboard/manageCourse/update/:id" element={<UpdateCourese />} />
-          <Route path="/dashboard/addCourse" element={<AddCourser />} />
-          <Route path="/dashboard/user" element={<User />} />
+          <Route
+            path="/dashboard/manageOrder"
+            element={
+              <RequreAuth>
+                <RequreAdmin>
+                  <ManageOrder />
+                </RequreAdmin>
+              </RequreAuth>
+            }
+          />
+          <Route
+            path="/dashboard/manageOrder/details/:id"
+            element={<ManageOrderDetails />}
+          />
+          <Route
+            path="/dashboard/manageCourse"
+            element={
+              <RequreAdmin>
+                <RequreAdmin>
+                  <ManageCourse />
+                </RequreAdmin>
+              </RequreAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/manageCourse/update/:id"
+            element={
+              <RequreAuth>
+                <RequreAdmin>
+                  <UpdateCourese />
+                </RequreAdmin>
+              </RequreAuth>
+            }
+          />
+          <Route
+            path="/dashboard/addCourse"
+            element={
+              <RequreAuth>
+                <RequreAdmin>
+                  <AddCourser />
+                </RequreAdmin>
+              </RequreAuth>
+            }
+          />
+          <Route
+            path="/dashboard/user"
+            element={
+              <RequreAuth>
+                <RequreAdmin>
+                  <User />
+                </RequreAdmin>
+              </RequreAuth>
+            }
+          />
         </Route>
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />

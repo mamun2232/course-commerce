@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import auth from "../../firebase.init";
+import useAdmin from "../Authorazation/useAdmin";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -15,6 +16,9 @@ const Dashboard = () => {
   }, []);
 
   const [user] = useAuthState(auth);
+
+  const [admin] = useAdmin(user);
+  console.log(admin);
   return (
     <>
       <div class="d-flex" id="wrapper">
@@ -42,30 +46,34 @@ const Dashboard = () => {
             >
               <i class="fas fa-chart-line me-2"></i>My Profile
             </Link>
-            <Link
-              to="manageOrder"
-              class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i class="fas fa-paperclip me-2"></i>Manage All Order
-            </Link>
-            <Link
-              to="manageCourse"
-              class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i class="fas fa-shopping-cart me-2"></i>Manage All Course
-            </Link>
-            <Link
-              to="addCourse"
-              class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i class="fas fa-gift me-2"></i>Add Course
-            </Link>
-            <Link
-              to="user"
-              class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            >
-              <i class="fas fa-comment-dots me-2"></i>User
-            </Link>
+            {admin && (
+              <>
+                <Link
+                  to="manageOrder"
+                  class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                >
+                  <i class="fas fa-paperclip me-2"></i>Manage All Order
+                </Link>
+                <Link
+                  to="manageCourse"
+                  class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                >
+                  <i class="fas fa-shopping-cart me-2"></i>Manage All Course
+                </Link>
+                <Link
+                  to="addCourse"
+                  class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                >
+                  <i class="fas fa-gift me-2"></i>Add Course
+                </Link>
+                <Link
+                  to="user"
+                  class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                >
+                  <i class="fas fa-comment-dots me-2"></i>User
+                </Link>
+              </>
+            )}
 
             <span
               href="#"

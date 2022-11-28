@@ -10,10 +10,26 @@ const User = () => {
   const [adviser, setAdviser] = useState([]);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [deleteShow, setdeleteShow] = useState(false);
   const [myUser, setMyUser] = useState({});
   const [id, setId] = useState("");
   const [role, setRole] = useState("");
   const handleClose = () => setShow(false);
+  const handleDeleteClose = () => setdeleteShow(false);
+  const handleDeleteShow = (id) => {
+    setdeleteShow(true);
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/single/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setMyUser(data?.user);
+          // setUser(data?.user);
+          // setLoading(false);
+        } else {
+          // setLoading(false);
+        }
+      });
+  };
   const [fetchData, setFetch] = useState(false);
   const [userRole, setUserRole] = useState("user");
   const handleShow = (id) => {
@@ -34,7 +50,7 @@ const User = () => {
   useEffect(() => {
     setLoading(true);
     //     const userId = localStorage.getItem("userId");
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/user`)
+    fetch(`http://localhost:5000/api/v1/user/user`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -55,9 +71,10 @@ const User = () => {
           setLoading(false);
         }
       });
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/adviser`)
+    fetch(`http://localhost:5000/api/v1/user/adviser`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.success) {
           setAdviser(data?.user);
           setLoading(false);
@@ -107,7 +124,6 @@ const User = () => {
   ];
 
   const removeAdminHendeler = (userss) => {
-    console.log(userss)
     fetch(
       `http://localhost:5000/api/v1/user/remove/${userss}?roleAction=${userRole}`,
       {
@@ -120,10 +136,6 @@ const User = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          // disPatch(fetchUser());
-          // disPatch(fetchAdmin());
-          // toast("Admin Make Successfull");
-          // closeModal();
           setFetch(true);
           handleClose();
           swal({
@@ -132,6 +144,27 @@ const User = () => {
             icon: "success",
             buttons: [false],
           });
+        }
+      });
+  };
+
+  const deleteHenedler = () => {
+    fetch(`http://localhost:5000/api/v1/user/delete/${myUser?._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          swal({
+            title: "User Delete Successfull",
+            text: "Thank you Sir",
+            icon: "success",
+            buttons: [false],
+          });
+          handleDeleteClose();
+        } else {
+          handleDeleteClose();
         }
       });
   };
@@ -153,11 +186,11 @@ const User = () => {
                 </tr>
               </thead>
               <tbody>
-                {user?.map((user) => (
-                  <tr key={user?._id}>
-                    <th scope="row">{user?.name}</th>
-                    <td>{user.email}</td>
-                    <td>{user.role}</td>
+                {user?.map((userss) => (
+                  <tr key={userss?._id}>
+                    <th scope="row">{userss?.name}</th>
+                    <td>{userss.email}</td>
+                    <td>{userss.role}</td>
                     <td>
                       <Modal show={show} onHide={handleClose}>
                         <div className=" p-5">
@@ -251,7 +284,7 @@ const User = () => {
         </Modal.Footer> */}
                       </Modal>
                       <button
-                        onClick={() => handleShow(user?._id)}
+                        onClick={() => handleShow(userss?._id)}
                         className="btn btn-warning"
                       >
                         Make Admin
@@ -259,7 +292,34 @@ const User = () => {
                     </td>
 
                     <td>
-                      <span className="delete-btn">
+                      <span
+                        onClick={() => handleDeleteShow(userss?._id)}
+                        className="delete-btn"
+                      >
+                        <Modal show={deleteShow} onHide={handleDeleteClose}>
+                          <div className=" p-5">
+                            <Modal.Title className="text-center">
+                              Are You Sure Delete?
+                            </Modal.Title>
+
+                            <div className=" d-flex justify-content-center mt-2">
+                              <Button
+                                // variant="secondary"
+                                className="btn btn-warning px-5"
+                                onClick={() => deleteHenedler(userss?._id)}
+                              >
+                                ok
+                              </Button>
+                            </div>
+                          </div>
+                          {/* <Modal.Header closeButton> */}
+
+                          {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
+
+                          {/* <Modal.Footer>
+         
+        </Modal.Footer> */}
+                        </Modal>
                         <AiFillDelete />
                       </span>
                     </td>
@@ -293,7 +353,10 @@ const User = () => {
                     </td> */}
 
                     <td>
-                      <span onClick={()=>removeAdminHendeler(user?.email)} className="delete-btn">
+                      <span
+                        onClick={() => removeAdminHendeler(user?.email)}
+                        className="delete-btn"
+                      >
                         <AiFillDelete />
                       </span>
                     </td>
@@ -327,7 +390,10 @@ const User = () => {
                     </td> */}
 
                     <td>
-                      <span onClick={()=>removeAdminHendeler(user?.email)} className="delete-btn">
+                      <span
+                        onClick={() => removeAdminHendeler(user?.email)}
+                        className="delete-btn"
+                      >
                         <AiFillDelete />
                       </span>
                     </td>
