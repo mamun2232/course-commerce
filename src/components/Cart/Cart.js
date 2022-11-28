@@ -67,13 +67,12 @@ const Cart = () => {
 
         {
           cart.length > 0 ?  
-          <div className="row gx-5">
-          <div className="col-lg-8">
+          <div className="row gx-">
+          <div className="col-lg-8 col-sm-12 cartTable">
             {/* <p>Shopping Cart</p> */}
-            <Table striped bordered hover>
+            <Table className="" striped bordered hover>
               <thead>
                 <tr>
-                  <th>PICTURE</th>
                   <th>GOIF COURSE</th>
                   <th>QUANTITY</th>
                   <th>PRICE</th>
@@ -85,7 +84,7 @@ const Cart = () => {
                 {cart &&
                   cart?.map(({ id, name, price, quantity, totalPrice }) => (
                     <tr className="" key={id}>
-                      <td>1</td>
+                    
                       <td>{name}</td>
                       <td>{quantity}</td>
                       <td>{price}</td>
@@ -103,7 +102,7 @@ const Cart = () => {
               </tbody>
             </Table>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-sm-12">
             <div className="card p-3">
               <p>Order Summary</p>
               <div className="cardTop"></div>

@@ -13,11 +13,11 @@ const Review = () => {
     <div className="my-5">
       <h5>Order History</h5>
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-lg-4 col-4 col-md-4">
           <p>Total Order Item</p>
         </div>
-        <div className="col-lg-4"></div>
-        <div className="col-lg-4">
+        <div className="col-lg-4 col-4 col-md-4"></div>
+        <div className="col-lg-4 col-4 col-md-4">
           <p>{cart.length} PSC</p>
         </div>
       </div>
@@ -25,13 +25,13 @@ const Review = () => {
       <div>
         {cart?.map((myOrder) => (
           <div key={myOrder.id} className="row">
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-4 col-md-4">
               <b>{myOrder.name}</b>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-4 col-md-4">
               <p> {myOrder.quantity} PSC</p>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-4 col-md-4">
               <p> {myOrder.price} Tk</p>
             </div>
           </div>
@@ -39,39 +39,39 @@ const Review = () => {
 
         <div className="cardTop"></div>
         <div className="row">
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-4 col-md-4">
             <p>Total Amount</p>
           </div>
-          <div className="col-lg-4"></div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-4 col-md-4"></div>
+          <div className="col-lg-4 col-4 col-md-4">
             <p>{subtotal} TK</p>
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-4 col-md-4">
             <small>Discount</small>
           </div>
-          <div className="col-lg-4"></div>
-          <div className="col-lg-4">
-            <small>{discount} TK</small>
+          <div className="col-lg-4 col-4 col-md-4"></div>
+          <div className="col-lg-4 col-4 col-md-4">
+            <small className="text-danger">{discount} TK</small>
           </div>
         </div>
       </div>
       <div className="cardTop mt-2"></div>
 
       <div className="row">
-        <div className="col-lg-4">
+        <div className="col-lg-4 col-4 col-md-4">
           <b>Total Cost</b>
         </div>
-        <div className="col-lg-4"></div>
-        <div className="col-lg-4">
+        <div className="col-lg-4 col-4 col-md-4"></div>
+        <div className="col-lg-4 col-4 col-md-4">
           <p>{totalCost} TK</p>
         </div>
       </div>
 
 
       <div className='my-5  d-flex justify-content-end '>
-                  <button onClick={()=>navigate("/myCart/chackout/review/payment")}  className='myButton'>Confrom Order</button>
+                  <button onClick={()=>navigate("/myCart/chackout/review/payment")}  className='btn btn-warning px-5'>Confrom Order</button>
 
             </div>
     </div>

@@ -75,7 +75,7 @@ const CourseDetails = () => {
                   <p>{course?.course?.course?.courseTitle}</p>
                   <div className="w-75 mt-3">
                     <p>{course?.course?.course?.description}</p>
-                    <div className=" mt-5 d-flex   justify-content-between">
+                    <div className="counterCard mt-5 d-flx   justify-content-between">
                       <div className="d-flex gap-2">
                         <button
                           onClick={() => decreasequantity()}
@@ -91,8 +91,8 @@ const CourseDetails = () => {
                           +
                         </button>
                       </div>
-                      <div>
-                        Avalible quantity: {course?.course?.course?.Stock}
+                      <div className="mt-3">
+                        <h6>Avalible quantity: {course?.course?.course?.Stock}</h6>
                       </div>
                     </div>
                   </div>

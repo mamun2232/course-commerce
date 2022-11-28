@@ -48,12 +48,12 @@ const Course = () => {
       <div className="container mt-5">
         <div className="card-section">
           <div className="car">
-            <div className="row">
-              <div className="col-lg-2">
+            <div className="row" >
+              <div className="col-lg-2 mt-4">
                 <h5>CATEGORY</h5>
                 <div className="cardTop mt-2"></div>
 
-                <div className="filterCetagory">
+                <div className="filterCetagory ">
                   {categoryOnlyData.map((cetagory, index) => {
                     return (
                       <p
@@ -80,7 +80,7 @@ const Course = () => {
                 </div>
               </div>
               <div className="col-lg-10">
-                <div className="cards">
+                <div className="cards mt-4">
                   {courses.loading && (
                     <div className=" flex  justify-end">
                       <Loading></Loading>

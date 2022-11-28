@@ -2,7 +2,7 @@ import React from "react";
 
 const Description = () => {
   return (
-    <div className="my-5">
+    <div className="section">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-sm-6">

@@ -79,7 +79,7 @@ const Courses = () => {
                 </div>
               </div>
               <div className="col-lg-10">
-                <div className="cards">
+                <div className="cards mt-3">
                   {courses.loading && (
                     <div className=" flex  justify-end">
                       <Loading></Loading>

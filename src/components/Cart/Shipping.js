@@ -23,7 +23,7 @@ const Shipping = () => {
       <h5>Personal Information</h5>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row">
-          <div className="col-lg-6 ">
+          <div className="col-lg-6 mt-2">
             <span className="label">Name</span>
             <input
               {...register("name", {
@@ -44,7 +44,7 @@ const Shipping = () => {
               )}
             </label>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 mt-2">
             <span className="label">Email & Username</span>
             <input
               {...register("email", {
@@ -72,8 +72,8 @@ const Shipping = () => {
             </label>
           </div>
         </div>
-        <div className="row mt-3">
-          <div className="col-lg-6 ">
+        <div className="row mt-1">
+          <div className="col-lg-6 mt-2">
             <span className="label">Address</span>
             <input
               {...register("address", {
@@ -94,7 +94,7 @@ const Shipping = () => {
               )}
             </label>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 mt-2">
             <span className="label">Country</span>
             <input
               {...register("country", {
@@ -115,8 +115,8 @@ const Shipping = () => {
             </label>
           </div>
         </div>
-        <div className="row mt-3">
-          <div className="col-lg-6 ">
+        <div className="row mt-1">
+          <div className="col-lg-6 mt-2">
             <span className="label">City</span>
             <input
               {...register("city", {
@@ -137,7 +137,7 @@ const Shipping = () => {
               )}
             </label>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 mt-2">
             <span className="label">Phone</span>
             <input
               {...register("phoneNo", {
@@ -203,7 +203,7 @@ const Shipping = () => {
         </div>
 
         <div className="my-5  d-flex justify-content-end ">
-          <input type="submit" value="Confrom Shipping" className="myButton" />
+          <input type="submit" value="Confrom Shipping" className="btn btn-warning px-5" />
         </div>
       </form>
     </>

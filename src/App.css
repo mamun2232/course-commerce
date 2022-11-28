@@ -138,7 +138,7 @@ justify-content: center;
   outline: none;
 }
 .loginInput{
-  width: 170px;
+  width: 100%;
   border: 1px solid rgb(207, 207, 204);
   height: 40px;
   border-radius: 6px;
@@ -311,4 +311,83 @@ justify-content: center;
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+}
+.section{
+  margin-top: 120px;
+}
+.shippinContainer{
+  width: 100%;
+  padding: 25px;
+}
+
+.pinter{
+  cursor: pointer;
+}
+/* ......................media query  */
+@media screen and (max-width: 780px) {
+  .myCards{
+    width: 100%;
+  
+  }
+  .searchBox{
+    width: 100%;
+  }
+
+  .shippinContainer{
+    width: 100%;
+    padding: 25px;
+  }
+  .shippingInput{
+    width: 100%;
+    border: 1px solid rgb(207, 207, 204);
+    height: 40px;
+    border-radius: 10px;
+    padding: 2px 20px;
+    font-size: 15px;
+    outline: none;
+  }
+  .loginContainer{
+    width: 100%;
+  
+  }
+  .EmailInput{
+    width: 100%;
+    border: 1px solid rgb(207, 207, 204);
+    height: 40px;
+    border-radius: 6px;
+    padding: 2px 20px;
+    font-size: 15px;
+    outline: none;
+  
+  }
+
+  .loginInput{
+    width: 100%;
+    border: 1px solid rgb(207, 207, 204);
+    height: 40px;
+    border-radius: 6px;
+    padding: 2px 20px;
+    font-size: 15px;
+    outline: none;
+  }
+  .myCart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    position: relative;
+  }
+  .cartlength{
+    position: absolute;
+    right: 100%;
+    background-color: #282c34;
+    color: azure;
+    height: 15px;
+    padding: 0px 2px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+    }
 }

@@ -114,7 +114,7 @@ const CheckoutForm = () => {
                 </div>
               )}
               <button
-                className="myButton rounded-lg px-8 py-2 mt-3  text-white  "
+                className="btn btn-warning rounded-lg px-5 py-2 mt-3  text-whit  "
                 disabled={isLoading || !stripe || !elements}
                 id="submit"
               >

@@ -115,14 +115,14 @@ const Login = () => {
                   value="Login"
                 />
               </div>
-              <p className=" text-end text-primary mt-2">Forgate Password?</p>
+              <p className=" text-end text-primary mt-2 pinter">Forgate Password?</p>
             </div>
           </div>
         </div>
       </form>
 
       <p className="text-center mt-2">
-        <span onClick={() => navigete("/signUp")} className="text-primary">
+        <span onClick={() => navigete("/signUp")} className="text-primary pinter">
           Create an Account
         </span>{" "}
       </p>

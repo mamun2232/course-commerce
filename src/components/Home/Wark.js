@@ -2,7 +2,7 @@ import React from "react";
 
 const Wark = () => {
   return (
-    <div className="my-5">
+    <div className="section">
       <div className="container">
         <div className="wark-description mt-4">
           <h1 className="text-center">This is how it works</h1>

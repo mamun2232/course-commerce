@@ -56,7 +56,8 @@ const ManageCourse = () => {
       <div class="row my-5">
         <h3 class="fs-4 mb-3">Manage Course</h3>
         <div class="col">
-          <table class="table bg-white rounded shadow-sm  table-hover">
+        <div className="overflow-auto">
+        <table class="table bg-white rounded shadow-sm  table-hover">
             <thead>
               <tr>
                 <th scope="col">NAME</th>
@@ -127,6 +128,8 @@ const ManageCourse = () => {
               ))}
             </tbody>
           </table>
+          </div>
+         
         </div>
       </div>
     </div>

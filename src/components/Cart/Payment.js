@@ -41,14 +41,15 @@ const Payment = () => {
   return (
     <div className="my-5">
       <div className="container">
-        <div className="card p-5 w-75 sm:w-10 mx-auto">
-          <div className="paymentStrip d-flex  gap-3 rounded border w-50 ">
+        <div className="card   shippinContainer">
+          <div className="">
             {/* <div>
 
             </div> */}
-            <span className="personal px-4 py-">Personal Info</span>
+            {/* <span className="personal px-4 py-">Personal Info</span>
             <span className="personal">Order Review</span>
-            <span className="personal px-4">Payment</span>
+            <span className="personal px-4">Payment</span> */}
+            <h5>STEP NO THREE</h5>
           </div>
           <div className="mt-5">
             {/* <Review /> */}

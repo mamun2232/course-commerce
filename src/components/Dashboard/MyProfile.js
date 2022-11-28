@@ -24,7 +24,7 @@ const MyProfile = () => {
 
   if (loading) return <Loading />;
   return (
-    <div className="my-5 card p-5 w-50 mx-auto">
+    <div className="my-5 card p-5 lg-w-50 mx-auto">
       <div className=" d-flex gap-3">
         <td>
           <span>Role:</span>

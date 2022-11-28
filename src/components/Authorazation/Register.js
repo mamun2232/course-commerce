@@ -225,7 +225,7 @@ const Register = () => {
 
       <p className="text-center mt-2">
         Already have an account?{" "}
-        <span onClick={() => navigate("/login")} className="text-primary">
+        <span onClick={() => navigate("/login")} className="text-primary pinter">
           Login here
         </span>{" "}
       </p>
