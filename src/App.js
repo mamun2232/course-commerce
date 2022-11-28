@@ -24,6 +24,7 @@ import ManageOrderDetails from "./components/Dashboard/ManageOrderDetails";
 import ManageCourse from "./components/Dashboard/ManageCourse";
 import AddCourser from "./components/Dashboard/AddCourser";
 import User from "./components/Dashboard/User";
+import UpdateCourese from "./components/Dashboard/UpdateCourese";
 function App() {
   return (
     <div className="">
@@ -58,6 +59,7 @@ function App() {
           <Route path="/dashboard/manageOrder" element={<ManageOrder />} />
           <Route path="/dashboard/manageOrder/details/:id" element={<ManageOrderDetails />} />
           <Route path="/dashboard/manageCourse" element={<ManageCourse />} />
+          <Route path="/dashboard/manageCourse/update/:id" element={<UpdateCourese />} />
           <Route path="/dashboard/addCourse" element={<AddCourser />} />
           <Route path="/dashboard/user" element={<User />} />
         </Route>

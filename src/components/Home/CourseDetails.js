@@ -33,7 +33,7 @@ const CourseDetails = () => {
       parseInt(quantity) * parseInt(course?.course?.course?.price);
     const shoppingCart = {
       name: course?.course?.course?.name,
-      image: course?.course?.course?.images[0].url,
+      image: course?.course?.course?.images[0]?.url,
       description: course?.course?.course?.description,
       price: course?.course?.course?.price,
       id: course?.course?.course?._id,
@@ -62,7 +62,7 @@ const CourseDetails = () => {
                 <div className="col-lg-6 col-sm-6 gap-3">
                   <img
                     className="img-fluid rounded"
-                    src="https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg"
+                    src={course?.course?.course?.images[0]?.url}
                     alt=""
                   />
                 </div>

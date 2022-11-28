@@ -99,7 +99,7 @@ const Course = () => {
                           <Card.Img
                             className="cardImg"
                             variant="top"
-                            src={course.images[0].url}
+                            src={course.images[0]?.url}
                           />
                           <Card.Body>
                             <Card.Title>{course.name}</Card.Title>

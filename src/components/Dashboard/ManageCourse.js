@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useNavigation } from "react-router-dom";
 import swal from "sweetalert";
 import Loading from "../Utilites/Loading";
 
@@ -26,12 +26,14 @@ const ManageCourse = () => {
       });
   }, [show]);
 
-
   const deleteHenedler = (id) => {
     console.log(id);
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -82,36 +84,43 @@ const ManageCourse = () => {
                     </button>
                   </td>
                   <td>
-                  <Modal show={show} onHide={handleClose}>
-                        <div className=" p-5">
-                          <Modal.Title className="text-center">
-                            Are You Sure Delete?
-                          </Modal.Title>
+                    <Modal show={show} onHide={handleClose}>
+                      <div className=" p-5">
+                        <Modal.Title className="text-center">
+                          Are You Sure Delete?
+                        </Modal.Title>
 
-                          <div className=" d-flex justify-content-center mt-2">
-                            <Button
-                              // variant="secondary"
-                              className="btn btn-warning px-5"
-                              onClick={() => deleteHenedler(course?._id)}
-                            >
-                              ok
-                            </Button>
-                          </div>
+                        <div className=" d-flex justify-content-center mt-2">
+                          <Button
+                            // variant="secondary"
+                            className="btn btn-warning px-5"
+                            onClick={() => deleteHenedler(course?._id)}
+                          >
+                            ok
+                          </Button>
                         </div>
-                        {/* <Modal.Header closeButton> */}
+                      </div>
+                      {/* <Modal.Header closeButton> */}
 
-                        {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
+                      {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
 
-                        {/* <Modal.Footer>
+                      {/* <Modal.Footer>
          
         </Modal.Footer> */}
-                      </Modal>
-                    <span onClick={() => handleShow()}  className="delete-btn">
+                    </Modal>
+                    <span onClick={() => handleShow()} className="delete-btn">
                       <AiFillDelete />
                     </span>
 
-                    <span className="delete-btn px-2">
-                      <FaRegEdit/>
+                    <span
+                      onClick={() =>
+                        navigate(
+                          `/dashboard/manageCourse/update/${course?._id}`
+                        )
+                      }
+                      className="delete-btn px-2"
+                    >
+                      <FaRegEdit />
                     </span>
                   </td>
                 </tr>

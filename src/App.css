@@ -180,7 +180,21 @@ justify-content: center;
   height: 180px;
   
 }
-
+.add-image{
+  /* h-44 lg:w-72 w-52 border rounded-md flex justify-center  items-center */
+  height: 150px;
+  width: 200px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.add-image img{
+  width: 190px;
+  height: 145px;
+}
 .myCards{
   width: 250px;
 

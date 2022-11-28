@@ -1,54 +1,86 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
-import axios from "axios";
-import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 import swal from "sweetalert";
-const AddCourser = () => {
-  const navigate = useNavigate();
-  // const disPatch = useDispatch();
+import auth from "../../firebase.init";
+
+const UpdateCourese = () => {
+  const { id } = useParams();
+  const [course, setCourse] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [user] = useAuthState(auth);
+  useEffect(() => {
+    setLoading(true);
+    fetch(`http://localhost:5000/api/v1/courses/course/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          setCourse(data.course);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      });
+  }, []);
+
   const [productPictue, setProductPicture] = useState("");
   const {
     register,
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: course.name,
+      email: course.courseTitle,
+      price: course.price,
+      category: course.category,
+      //   address: shipping?.address,
+      //   phoneNo: shipping?.phoneNo,
+      //   pinCode: shipping?.pinCode,
+    },
+  });
+  console.log(course);
+
   const onSubmit = async (data) => {
-    const myForm = new FormData();
-    myForm.append("name", data.name);
-    myForm.append("category", data.category);
-    myForm.append("description", data.description);
-    myForm.append("Stock", data.Stock);
-    myForm.append("price", data.price);
-    myForm.append("courseTitle", data.courseTitle);
-    // myForm.append("user", userId);
-    myForm.append("images", productPictue);
-    await axios({
-      method: "post",
-      url: "http://localhost:5000/api/v1/courses/course",
-      data: myForm,
-      headers: {
-        "Content-Type": "multipart/form-data",
-        authorization: `Bearer ${localStorage.getItem("UserToken")}`,
-      },
-    })
-      .then((res) => {
-        setProductPicture("");
-        reset();
-        swal({
-          title: "Course Add Successfull",
-          text: "Thank you Sir",
-          icon: "success",
-          buttons: [false],
-        });
+      const myForm = new FormData();
+      myForm.append("name", data.name);
+      myForm.append("category", data.category);
+      myForm.append("description", data.description);
+      myForm.append("Stock", data.Stock);
+      myForm.append("price", data.price);
+      myForm.append("courseTitle", data.courseTitle);
+      // myForm.append("user", userId);
+      // myForm.append("images", productPictue);
+      await axios({
+        method: "PUT",
+        url: `http://localhost:5000/api/v1/courses/course/${id}`,
+        data: myForm,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: `Bearer ${localStorage.getItem("UserToken")}`,
+        },
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          setProductPicture("");
+          reset();
+          swal({
+            title: "Course Update Successfull",
+            text: "Thank you Sir",
+            icon: "success",
+            buttons: [false],
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
+
   const ProductPictureHendeler = (e) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -61,7 +93,7 @@ const AddCourser = () => {
   return (
     <div className="my-5">
       <div className="card p-3">
-        <h5>Add Course</h5>
+        <h5>Update Course</h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row mt-5">
             <div className="col-lg-6 ">
@@ -73,6 +105,7 @@ const AddCourser = () => {
                     message: "Name is Required",
                   },
                 })}
+                //     value={course?.name}
                 placeholder="Course Name"
                 className="shippingInput"
                 type="text"
@@ -197,7 +230,7 @@ const AddCourser = () => {
             </div>
           </div>
           <div className="row mt-3">
-            <div className="col-lg-6 ">
+            {/* <div className="col-lg-6 ">
               <span className="label">Image</span>
               <input
                 {...register("images", {
@@ -251,7 +284,7 @@ const AddCourser = () => {
                   <span className="text-danger">{errors.images.message}</span>
                 )}
               </label>
-            </div>
+            </div> */}
             {/* <div className="col-lg-6">
           <span className="label">Phone</span>
           <input
@@ -275,7 +308,7 @@ const AddCourser = () => {
           </div>
 
           <div className="my-5  d-flex justify-content-center ">
-            <input type="submit" value="Add Course" className="myButton" />
+            <input type="submit" value="Update Course" className="myButton" />
           </div>
         </form>
       </div>
@@ -283,4 +316,4 @@ const AddCourser = () => {
   );
 };
 
-export default AddCourser;
+export default UpdateCourese;

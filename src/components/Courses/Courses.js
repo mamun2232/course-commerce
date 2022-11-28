@@ -18,7 +18,7 @@ const Courses = () => {
     // setshart(true);
     disPatch(fetchCourse());
     axios
-      .get("http://localhost:5000/api/v1/courses/course", config)
+      .get("https://ancient-earth-39666.herokuapp.com/api/v1/courses/course", config)
       .then((res) => setCetagory(res?.data?.course));
   }, []);
 
@@ -98,7 +98,7 @@ const Courses = () => {
                           <Card.Img
                             className="cardImg"
                             variant="top"
-                            src={course.images[0].url}
+                            src={course.images[0]?.url}
                           />
                           <Card.Body>
                             <Card.Title>{course.name}</Card.Title>
