@@ -7,8 +7,8 @@ const Banner = () => {
       <Carousel>
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg"
+            className="d-block w-100 bannerCarousel"
+            src="/picture/caro 1.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -17,8 +17,8 @@ const Banner = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 h-[400px]"
-            src="https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg"
+            className="d-block w-100 bannerCarousel"
+            src="/picture/caro 2.png"
             alt="Second slide"
           />
 
@@ -28,8 +28,8 @@ const Banner = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100 h-[400px]"
-            src="https://polite-bubblegum-8fcb31.netlify.app/images/image.jpg"
+            className="d-block w-100 bannerCarousel"
+            src="/picture/caro 3.jpg"
             alt="Third slide"
           />
 

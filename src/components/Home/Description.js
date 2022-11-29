@@ -17,21 +17,21 @@ const Description = () => {
                 <Carousel.Item>
                   <img
                     className="d-block w-100 carouselImg"
-                    src="https://media.istockphoto.com/id/1297349747/photo/hot-air-balloons-flying-over-the-botan-canyon-in-turkey.jpg?b=1&s=170667a&w=0&k=20&c=1oQ2rt0FfJFhOcOgJ8hoaXA5gY4225BA4RdOP1RRBz4="
+                    src="/picture/1.png"
                     alt="First slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="d-block w-100 carouselImg"
-                    src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg"
+                    src="/picture/2.jpg"
                     alt="Second slide"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="d-block w-100 carouselImg"
-                    src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
+                    src="/picture/3.jpg"
                     alt="Third slide"
                   />
                 </Carousel.Item>

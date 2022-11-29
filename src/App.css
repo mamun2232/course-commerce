@@ -353,6 +353,14 @@ justify-content: center;
   display: flex;
   justify-content: space-between;
 }
+
+.carouselImg{
+  height: 430px;
+}
+
+.bannerCarousel{
+  height: 600px;
+}
 /* ......................media query  */
 @media screen and (max-width: 780px) {
   .myCards{

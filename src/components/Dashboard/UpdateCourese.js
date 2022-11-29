@@ -15,7 +15,7 @@ const UpdateCourese = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/api/v1/courses/course/${id}`)
+    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -59,7 +59,7 @@ const UpdateCourese = () => {
       // myForm.append("images", productPictue);
       await axios({
         method: "PUT",
-        url: `http://localhost:5000/api/v1/courses/course/${id}`,
+        url: `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`,
         data: myForm,
         headers: {
           "Content-Type": "multipart/form-data",
