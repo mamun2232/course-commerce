@@ -30,7 +30,7 @@ const Navber = () => {
                 user &&  <Nav.Link href="/dashboard">Dashbaord</Nav.Link>
               }
              
-              <Nav.Link href="#action2">Contact</Nav.Link>
+              <Nav.Link href="/contact">Contact</Nav.Link>
               <Nav.Link href="#action2">Privacy Policy</Nav.Link>
               <Nav.Link href="#action2">Terms and Condation</Nav.Link>
             </Nav>

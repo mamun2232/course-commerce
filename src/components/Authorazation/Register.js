@@ -23,7 +23,7 @@ const Register = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+  
     if (data.password == data.confromPiassword) {
       const name = `${data.fistName} ${data.lastName}`;
       const userInfo = {

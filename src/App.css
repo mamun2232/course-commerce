@@ -323,6 +323,36 @@ justify-content: center;
 .pinter{
   cursor: pointer;
 }
+
+.contact-container{
+  width: 650px;
+}
+
+.ContextInput{
+  width: 300px;
+  border: 1px solid rgb(207, 207, 204);
+  height: 40px;
+  border-radius: 6px;
+  padding: 2px 20px;
+  font-size: 15px;
+  outline: none;
+}
+
+.contextTextAre{
+  width: 610px;
+  border: 1px solid rgb(207, 207, 204);
+  height: 140px;
+  border-radius: 6px;
+  padding: 2px 20px;
+  font-size: 15px;
+  outline: none;
+
+}
+
+.context-us{
+  display: flex;
+  justify-content: space-between;
+}
 /* ......................media query  */
 @media screen and (max-width: 780px) {
   .myCards{
@@ -389,5 +419,35 @@ justify-content: center;
     align-items: center;
     border-radius: 5px;
     justify-content: center;
+    }
+
+    .contact-container{
+      width: 100%;
+    }
+
+    .ContextInput{
+      width: 100%;
+      border: 1px solid rgb(207, 207, 204);
+      height: 40px;
+      border-radius: 6px;
+      padding: 2px 20px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .contextTextAre{
+      width: 100%;
+      border: 1px solid rgb(207, 207, 204);
+      height: 140px;
+      border-radius: 6px;
+      padding: 2px 20px;
+      font-size: 15px;
+      outline: none;
+    
+    }
+
+    .context-us{
+      display: block;
+      /* justify-content: end; */
     }
 }

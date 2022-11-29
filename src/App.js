@@ -26,12 +26,15 @@ import AddCourser from "./components/Dashboard/AddCourser";
 import User from "./components/Dashboard/User";
 import UpdateCourese from "./components/Dashboard/UpdateCourese";
 import RequreAdmin from "./components/Authorazation/RequreAdmin";
+import Countact from "./components/Contect/Countact";
+import Contect from "./components/Dashboard/Contect";
 function App() {
   return (
     <div className="">
       <Navber />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/contact" element={<Countact/>}></Route>
         <Route path="/course" element={<Courses />}></Route>
         <Route
           path="/course/details/:id"
@@ -84,6 +87,16 @@ function App() {
               <RequreAdmin>
                 <RequreAdmin>
                   <ManageCourse />
+                </RequreAdmin>
+              </RequreAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/contect"
+            element={
+              <RequreAdmin>
+                <RequreAdmin>
+                  <Contect />
                 </RequreAdmin>
               </RequreAdmin>
             }
