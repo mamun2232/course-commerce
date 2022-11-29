@@ -1,4 +1,5 @@
 import React from "react";
+import { Carousel } from "react-bootstrap";
 
 const Description = () => {
   return (
@@ -6,12 +7,35 @@ const Description = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-6 col-sm-6">
-            <div>
-              <img
+            <div  className="h-50">
+              {/* <img
                 className="img-fluid rounded"
                 src="https://polite-bubblegum-8fcb31.netlify.app/caro/junior%20golf%20foursome%20(2).jpg"
                 alt=""
-              />
+              /> */}
+              <Carousel slide={false}>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100 carouselImg"
+                    src="https://media.istockphoto.com/id/1297349747/photo/hot-air-balloons-flying-over-the-botan-canyon-in-turkey.jpg?b=1&s=170667a&w=0&k=20&c=1oQ2rt0FfJFhOcOgJ8hoaXA5gY4225BA4RdOP1RRBz4="
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100 carouselImg"
+                    src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg"
+                    alt="Second slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100 carouselImg"
+                    src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+              </Carousel>
             </div>
           </div>
           <div className="col-lg-6 col-sm-6">

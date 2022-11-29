@@ -28,6 +28,7 @@ import UpdateCourese from "./components/Dashboard/UpdateCourese";
 import RequreAdmin from "./components/Authorazation/RequreAdmin";
 import Countact from "./components/Contect/Countact";
 import Contect from "./components/Dashboard/Contect";
+import ContectDetails from "./components/Dashboard/ContectDetails";
 function App() {
   return (
     <div className="">
@@ -97,6 +98,16 @@ function App() {
               <RequreAdmin>
                 <RequreAdmin>
                   <Contect />
+                </RequreAdmin>
+              </RequreAdmin>
+            }
+          />
+          <Route
+            path="/dashboard/contect/message/:id"
+            element={
+              <RequreAdmin>
+                <RequreAdmin>
+                  <ContectDetails />
                 </RequreAdmin>
               </RequreAdmin>
             }
