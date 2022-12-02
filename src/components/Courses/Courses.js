@@ -47,12 +47,12 @@ const Courses = () => {
       <div className="container mt-5">
         <div className="card-section">
           <div className="car">
-            <div className="row">
-              <div className="col-lg-2">
+            <div className="row ">
+              <div className="col-lg-2 ">
                 <h5>CATEGORY</h5>
                 <div className="cardTop mt-2"></div>
 
-                <div className="filterCetagory">
+                <div className="filterCetagory px-4">
                   {categoryOnlyData.map((cetagory, index) => {
                     return (
                       <p
