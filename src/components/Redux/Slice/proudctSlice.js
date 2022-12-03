@@ -22,7 +22,7 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
   if (catagory == "All") {
     return axios
     .get(
-      `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course?category=${catagory}`,
+      `https://course-commerce-back-end.vercel.app/api/v1/courses/course?category=${catagory}`,
       config
     )
     .then((res) => res.data);
@@ -40,7 +40,7 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
     console.log(catagory);
     return axios
       .get(
-        `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course?category=${catagory}&kewword=${catagory}`,
+        `https://course-commerce-back-end.vercel.app/api/v1/courses/course?category=${catagory}&kewword=${catagory}`,
         config
       )
       .then((res) => res.data);
@@ -48,7 +48,7 @@ export const fetchCourse = createAsyncThunk("/courses/fetch", (catagory) => {
   
   return axios
     .get(
-      "https://ancient-earth-39666.herokuapp.com/api/v1/courses/course",
+      "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
       config
     )
     .then((res) => res.data);

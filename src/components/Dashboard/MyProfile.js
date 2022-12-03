@@ -10,7 +10,7 @@ const MyProfile = () => {
   useEffect(() => {
     setLodoing(true);
     const userId = localStorage.getItem("userId");
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/single/${userId}`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/single/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

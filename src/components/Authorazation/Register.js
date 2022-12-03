@@ -31,7 +31,7 @@ const Register = () => {
         email: data.email,
       };
 
-      fetch("https://ancient-earth-39666.herokuapp.com/api/v1/user/register", {
+      fetch("https://course-commerce-back-end.vercel.app/api/v1/user/register", {
         method: "POST",
         body: JSON.stringify(userInfo),
         headers: {

@@ -18,7 +18,7 @@ const Countact = () => {
       message: data.message,
     };
 
-    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/contect/contect", {
+    fetch("https://course-commerce-back-end.vercel.app/api/v1/contect/contect", {
       method: "POST",
       body: JSON.stringify(contect),
       headers: {

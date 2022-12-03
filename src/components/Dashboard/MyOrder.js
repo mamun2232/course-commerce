@@ -14,7 +14,7 @@ const MyOrder = () => {
   useEffect(() => {
     setLoading(true);
     const userId = localStorage.getItem("userId");
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order/myOrder/${userId}   `)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/order/myOrder/${userId}   `)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -32,7 +32,7 @@ const MyOrder = () => {
 
   const deleteHenedler = (id) => {
     console.log(id);
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order/${id}`, {
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/order/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

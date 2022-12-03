@@ -11,7 +11,7 @@ const ManageOrderDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order/${id} `)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/order/${id} `)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -26,7 +26,7 @@ const ManageOrderDetails = () => {
     return <Loading />;
   }
   const orderShippedHendeler = (id) => {
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order/${id}`, {
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/order/${id}`, {
       method: "PUT",
       body: JSON.stringify({ status: "Shipped" }),
       headers: {

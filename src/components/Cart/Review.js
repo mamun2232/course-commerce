@@ -9,6 +9,20 @@ const Review = () => {
   const totalCost = useSelector((state) => state.shipping.totalCost);
   const discount = useSelector((state) => state.shipping.discount);
   const navigate = useNavigate();
+
+  const paymentHendeler = () =>{
+    fetch('https://course-commerce-back-end.vercel.app/pay', {
+  method: 'POST',
+  body: JSON.stringify({price: 30}),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => {
+    console.log(json);
+  });
+  }
   return (
     <div className="my-5">
       <h5>Order History</h5>
@@ -68,8 +82,10 @@ const Review = () => {
           <p>{totalCost} TK</p>
         </div>
       </div>
-
-
+      <form action="https://course-commerce-back-end.vercel.app/pay" method="post">
+    <input type="submit" value="Buy"/>
+  </form>
+       
       <div className='my-5  d-flex justify-content-end '>
                   <button onClick={()=>navigate("/myCart/chackout/review/payment")}  className='btn btn-warning px-5'>Confrom Order</button>
 

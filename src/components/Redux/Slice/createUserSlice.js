@@ -9,7 +9,7 @@ const inititialUserState = {
 
 export const postUser = createAsyncThunk('/user/post' , (userData) =>{
       const config = { headers: { "Content-Type": "multipart/form-data" } };
-    return axios.post(`https://ancient-earth-39666.herokuapp.com/api/v1/user/register` , userData, config)
+    return axios.post(`https://course-commerce-back-end.vercel.app/api/v1/user/register` , userData, config)
     .then((res) => res.data)
 })
 

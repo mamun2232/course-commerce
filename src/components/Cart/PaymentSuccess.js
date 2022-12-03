@@ -38,7 +38,7 @@ const PaymentSuccess = () => {
     };
 
   
-      fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/order/new/${user}`, {
+      fetch(`https://course-commerce-back-end.vercel.app/api/v1/order/new/${user}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const User = () => {
   const handleDeleteClose = () => setdeleteShow(false);
   const handleDeleteShow = (id) => {
     setdeleteShow(true);
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/single/${id}`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/single/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -35,7 +35,7 @@ const User = () => {
   const handleShow = (id) => {
     setId(id);
     setShow(true);
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/single/${id}`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/single/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -50,7 +50,7 @@ const User = () => {
   useEffect(() => {
     setLoading(true);
     //     const userId = localStorage.getItem("userId");
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/user`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/user`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -61,7 +61,7 @@ const User = () => {
           setLoading(false);
         }
       });
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/owner`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/owner`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -71,7 +71,7 @@ const User = () => {
           setLoading(false);
         }
       });
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/adviser`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/adviser`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -90,7 +90,7 @@ const User = () => {
 
   const makeUserAdminHendeler = () => {
     fetch(
-      `https://ancient-earth-39666.herokuapp.com/api/v1/user/admin/${myUser?.email}?roleAction=${role}`,
+      `https://course-commerce-back-end.vercel.app/api/v1/user/admin/${myUser?.email}?roleAction=${role}`,
       {
         method: "PUT",
         headers: {
@@ -125,7 +125,7 @@ const User = () => {
 
   const removeAdminHendeler = (userss) => {
     fetch(
-      `https://ancient-earth-39666.herokuapp.com/api/v1/user/remove/${userss}?roleAction=${userRole}`,
+      `https://course-commerce-back-end.vercel.app/api/v1/user/remove/${userss}?roleAction=${userRole}`,
       {
         method: "PUT",
         headers: {
@@ -149,7 +149,7 @@ const User = () => {
   };
 
   const deleteHenedler = () => {
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/user/delete/${myUser?._id}`, {
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/delete/${myUser?._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

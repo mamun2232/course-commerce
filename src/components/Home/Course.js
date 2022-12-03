@@ -18,7 +18,7 @@ const Course = () => {
     // setshart(true);
     disPatch(fetchCourse());
     axios
-      .get("https://ancient-earth-39666.herokuapp.com/api/v1/courses/course", config)
+      .get("https://course-commerce-back-end.vercel.app/api/v1/courses/course", config)
       .then((res) => setCetagory(res?.data?.course));
   }, []);
 

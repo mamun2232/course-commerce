@@ -36,7 +36,7 @@ const Cart = () => {
   const applayPromoCodeHendeler = () => {
     console.log(promoCode.toLowerCase());
     fetch(
-      `https://ancient-earth-39666.herokuapp.com/api/v1/order/promo/?totalCost=${totalCost}&code=${promoCode?.toLowerCase()}`,
+      `https://course-commerce-back-end.vercel.app/api/v1/order/promo/?totalCost=${totalCost}&code=${promoCode?.toLowerCase()}`,
       {
         method: "POST",
         headers: {

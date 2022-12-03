@@ -28,7 +28,7 @@ const AddCourser = () => {
     myForm.append("images", productPictue);
     await axios({
       method: "post",
-      url: "https://ancient-earth-39666.herokuapp.com/api/v1/courses/course",
+      url: "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
       data: myForm,
       headers: {
         "Content-Type": "multipart/form-data",

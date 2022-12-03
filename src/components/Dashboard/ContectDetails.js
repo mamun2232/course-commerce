@@ -8,7 +8,7 @@ const ContectDetails = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch(`https://ancient-earth-39666.herokuapp.com/api/v1/contect/contect/${id}`)
+    fetch(`https://course-commerce-back-end.vercel.app/api/v1/contect/contect/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

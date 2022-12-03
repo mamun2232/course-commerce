@@ -16,7 +16,7 @@ const ManageCourse = () => {
   const handleShow = () => setShow(true);
   useEffect(() => {
     setLoading(true);
-    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/courses/course")
+    fetch("https://course-commerce-back-end.vercel.app/api/v1/courses/course")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -29,7 +29,7 @@ const ManageCourse = () => {
   const deleteHenedler = (id) => {
     console.log(id);
     fetch(
-      `https://ancient-earth-39666.herokuapp.com/api/v1/courses/course/${id}`,
+      `https://course-commerce-back-end.vercel.app/api/v1/courses/course/${id}`,
       {
         method: "DELETE",
       }

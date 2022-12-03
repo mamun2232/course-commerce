@@ -17,7 +17,7 @@ const Payment = () => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/order/create-payment-intent", {
+    fetch("https://course-commerce-back-end.vercel.app/api/v1/order/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

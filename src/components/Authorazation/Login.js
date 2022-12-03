@@ -22,7 +22,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    fetch("https://ancient-earth-39666.herokuapp.com/api/v1/user/login", {
+    fetch("https://course-commerce-back-end.vercel.app/api/v1/user/login", {
       method: "POST",
       body: JSON.stringify({ email: data.email }),
       headers: {
