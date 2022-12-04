@@ -22,7 +22,7 @@ const Courses = () => {
       .then((res) => setCetagory(res?.data?.course));
   }, []);
 
-  console.log(cetagory);
+
   const getUniqeData = (data, property) => {
     let SpecficCetagory = data.map((ctgy) => {
       return ctgy[property];

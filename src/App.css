@@ -458,4 +458,30 @@ justify-content: center;
       display: block;
       /* justify-content: end; */
     }
+   
 }
+
+/* 
+@media screen and (min-width: 1024px) {
+
+
+  .largeDevice{
+    display: block;
+  }
+  .smallDevice{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+
+
+  .largeDevice{
+    display: none;
+  }
+  .smallDevice{
+    display: block;
+  }
+
+} */
