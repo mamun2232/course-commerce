@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../Redux/Slice/cartSlice";
@@ -12,6 +13,7 @@ const CourseDetails = () => {
   const { id } = useParams();
   const disPatch = useDispatch();
   const course = useSelector((state) => state.course);
+  const position = [22.337153840738438, 91.83031289549679];
   useEffect(() => {
     disPatch(fetchSinglecourse(id));
   }, [id]);
@@ -60,14 +62,24 @@ const CourseDetails = () => {
             {!course.loading && course.error ? <p>{course.error}</p> : ""}
             {!course.loading && course?.course?.course ? (
               <>
-                <div className="col-lg-6 col-sm-6 gap-3">
+                <div
+                  data-aos="fade-right"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"
+                  className="col-lg-6 col-sm-6 gap-3"
+                >
                   <img
                     className="img-fluid rounded"
                     src={course?.course?.course?.images[0]?.url}
                     alt=""
                   />
                 </div>
-                <div className="col-lg-6 gap-3">
+                <div
+                  data-aos="fade-left"
+                  data-aos-offset="300"
+                  data-aos-easing="ease-in-sine"
+                  className="col-lg-6 gap-3"
+                >
                   <small className="text-muted py-0">
                     {course?.course?.course?.category}
                   </small>
@@ -130,7 +142,7 @@ const CourseDetails = () => {
             )}
           </div>
         </div>
-        {showMap && (
+        {/* {showMap && (
           <>
             <div
               style={{ width: 1030 }}
@@ -167,7 +179,7 @@ const CourseDetails = () => {
               ></iframe>
             </div>
           </>
-        )}
+        )} */}
       </div>
     </div>
   );

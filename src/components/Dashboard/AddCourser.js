@@ -17,6 +17,7 @@ const AddCourser = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
+    console.log(data)
     const myForm = new FormData();
     myForm.append("name", data.name);
     myForm.append("category", data.category);
@@ -24,6 +25,7 @@ const AddCourser = () => {
     myForm.append("Stock", data.Stock);
     myForm.append("price", data.price);
     myForm.append("courseTitle", data.courseTitle);
+    // myForm.append("googleMap", data.googleMap);
     // myForm.append("user", userId);
     myForm.append("images", productPictue);
     await axios({
@@ -60,7 +62,7 @@ const AddCourser = () => {
   };
   return (
     <div className="my-5">
-      <div className="card p-3">
+      <div data-aos="fade-right"  className="card p-3">
         <h5>Add Course</h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row mt-5">
@@ -183,7 +185,7 @@ const AddCourser = () => {
                   },
                 })}
                 placeholder="Description"
-                className="shippingInput"
+                className="shippingInput h-50"
                 name="description"
                 id="description"
               />
@@ -253,26 +255,30 @@ const AddCourser = () => {
               </label>
             </div>
             {/* <div className="col-lg-6">
-          <span className="label">Phone</span>
-          <input
-           {...register("phoneNo", {
-            required: {
-              value: true,
-              message: "Phone Number is Required",
-            },
-          })}
-            placeholder="Enter Your Phone"
-            className="shippingInput"
-            name=""
-            id=""
-          />
-          <label class="label">
-              {errors.phoneNo?.type === "required" && (
-                <span className="text-danger">{errors.phoneNo.message}</span>
-              )}
-            </label>
-        </div> */}
+              <span className="label">Google Map My Location Link</span>
+              <textarea
+                {...register("googleMap", {
+                  required: {
+                    value: true,
+                    message: "googleMap Live Link is Required",
+                  },
+                })}
+                placeholder="GoogleMap Live Link"
+                className="shippingInput h-75"
+                name="googleMap"
+                id="googleMap"
+                
+              />
+              <label class="label">
+                {errors.googleMap?.type === "required" && (
+                  <span className="text-danger">
+                    {errors.googleMap.message}
+                  </span>
+                )}
+              </label>
+            </div> */}
           </div>
+          
 
           <div className="my-5  d-flex justify-content-center ">
             <input type="submit" value="Add Course" className="myButton" />

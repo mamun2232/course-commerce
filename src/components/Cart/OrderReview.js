@@ -5,7 +5,12 @@ const OrderReview = () => {
   return (
     <div className="my-5">
       <div className="container">
-        <div className="card shippinContainer">
+        <div
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          className="card shippinContainer"
+        >
           <div className="">
             {/* <div>
 

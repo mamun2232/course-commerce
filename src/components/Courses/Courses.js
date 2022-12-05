@@ -18,10 +18,12 @@ const Courses = () => {
     // setshart(true);
     disPatch(fetchCourse());
     axios
-      .get("https://course-commerce-back-end.vercel.app/api/v1/courses/course", config)
+      .get(
+        "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
+        config
+      )
       .then((res) => setCetagory(res?.data?.course));
   }, []);
-
 
   const getUniqeData = (data, property) => {
     let SpecficCetagory = data.map((ctgy) => {
@@ -48,7 +50,12 @@ const Courses = () => {
         <div className="card-section">
           <div className="car">
             <div className="row ">
-              <div className="col-lg-2 ">
+              <div
+                data-aos="fade-right"
+                data-aos-offset="300"
+                data-aos-easing="ease-in-sine"
+                className="col-lg-2 "
+              >
                 <h5>CATEGORY</h5>
                 <div className="cardTop mt-2"></div>
 
@@ -79,7 +86,13 @@ const Courses = () => {
                 </div>
               </div>
               <div className="col-lg-10">
-                <div className="cards mt-3">
+                <div
+                  data-aos="fade-left"
+                  data-aos-anchor="#example-anchor"
+                  data-aos-offset="500"
+                  data-aos-duration="500"
+                  className="cards mt-3"
+                >
                   {courses.loading && (
                     <div className=" flex  justify-end">
                       <Loading></Loading>

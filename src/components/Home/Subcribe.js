@@ -6,7 +6,7 @@ const Subcribe = () => {
     <div className="section">
       <div className="container">
         <div className="bg-info rounded subcribe">
-          <div className="p-5 text-center">
+          <div data-aos="zoom-in" className="p-5 text-center">
             <h2 className="my-1">Stay Informed</h2>
             <p className="my-2">Get updates, special offers and more</p>
             <Form>

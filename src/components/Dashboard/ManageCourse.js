@@ -53,7 +53,7 @@ const ManageCourse = () => {
   console.log(course);
   return (
     <div className="my-5">
-      <div class="row my-5">
+      <div data-aos="fade-right" class="row my-5">
         <h3 class="fs-4 mb-3">Manage Course</h3>
         <div class="col">
         <div className="overflow-auto">

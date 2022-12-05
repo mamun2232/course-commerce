@@ -28,9 +28,12 @@ const Contect = () => {
   if (loading) return <Loading />;
 
   const contectDeleteHendeler = (id) => {
-    fetch(`https://course-commerce-back-end.vercel.app/api/v1/contect/contect/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://course-commerce-back-end.vercel.app/api/v1/contect/contect/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -52,7 +55,7 @@ const Contect = () => {
         <div class="row my-5">
           <h3 class="fs-4 mb-3">All Contect List</h3>
           <div class="col">
-            <div className="overflow-auto">
+            <div data-aos="fade-right" className="overflow-auto">
               <table class="table bg-white rounded shadow-sm  table-hover">
                 <thead>
                   <tr>

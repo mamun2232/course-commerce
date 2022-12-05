@@ -10,7 +10,9 @@ const MyProfile = () => {
   useEffect(() => {
     setLodoing(true);
     const userId = localStorage.getItem("userId");
-    fetch(`https://course-commerce-back-end.vercel.app/api/v1/user/single/${userId}`)
+    fetch(
+      `https://course-commerce-back-end.vercel.app/api/v1/user/single/${userId}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -24,7 +26,11 @@ const MyProfile = () => {
 
   if (loading) return <Loading />;
   return (
-    <div className="my-5 card p-5 lg-w-50 mx-auto">
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+      className="my-5 card p-5 lg-w-50 mx-auto"
+    >
       <div className=" d-flex gap-3">
         <td>
           <span>Role:</span>

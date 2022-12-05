@@ -66,7 +66,12 @@ const Cart = () => {
       <div className="container">
         {cart.length > 0 ? (
           <div className="row gx-">
-            <div className="col-lg-8 col-sm-12 cartTable">
+            <div
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="col-lg-8 col-sm-12 cartTable"
+            >
               {/* <p>Shopping Cart</p> */}
               <Table className="" striped bordered hover>
                 <thead>
@@ -99,7 +104,12 @@ const Cart = () => {
                 </tbody>
               </Table>
             </div>
-            <div className="col-lg-4 col-sm-12">
+            <div
+              data-aos="zoom-in-left"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+              className="col-lg-4 col-sm-12"
+            >
               <div className="card p-3">
                 <p>Order Summary</p>
                 <div className="cardTop"></div>

@@ -5,7 +5,12 @@ const Chackout = () => {
   return (
     <div className="my-5">
       <div className="container">
-        <div className="card   shippinContainer">
+        <div
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          className="card   shippinContainer"
+        >
           {/* <div className="paymentStrip d-flex  gap-5 rounded border w-50 ">
             <span className="personal px-4 py-">Personal Info</span>
             <span>Order Review</span>
@@ -13,7 +18,7 @@ const Chackout = () => {
           </div> */}
           <h5>STEP NO ONE</h5>
           <div className="mt-5">
-            <Shipping/>
+            <Shipping />
           </div>
         </div>
       </div>

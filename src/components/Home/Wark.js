@@ -6,7 +6,12 @@ const Wark = () => {
       <div className="container">
         <div className="wark-description mt-4">
           <h1 className="text-center">This is how it works</h1>
-          <div className="mt-4">
+          <div
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            className="mt-4"
+          >
             <p>
               At Michigan’s Best Golf Deals, we offer great golf deals 24/7, 365
               days a year. Each participating course has committed to a great
@@ -47,7 +52,12 @@ const Wark = () => {
               These offers will include BOGO’s, foursome discounts etc
             </p>
           </div>
-          <div className="mt-4">
+          <div
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            className="mt-4"
+          >
             <p>
               At Michigan’s Best Golf Deals, we offer great golf deals 24/7, 365
               days a year. Each participating course has committed to a great

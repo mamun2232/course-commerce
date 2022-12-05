@@ -6,8 +6,13 @@ const Description = () => {
     <div className="section">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-sm-6">
-            <div  className="h-50">
+          <div className="col-lg-6 col-sm-6 ">
+            <div
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-delay="300"
+              className="h-50"
+            >
               {/* <img
                 className="img-fluid rounded"
                 src="https://polite-bubblegum-8fcb31.netlify.app/caro/junior%20golf%20foursome%20(2).jpg"
@@ -38,7 +43,12 @@ const Description = () => {
               </Carousel>
             </div>
           </div>
-          <div className="col-lg-6 col-sm-6">
+          <div
+            data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="1000"
+            className="col-lg-6 col-sm-6"
+          >
             <div>
               <h2>Giving Back</h2>
               <p>
