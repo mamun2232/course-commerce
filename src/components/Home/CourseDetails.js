@@ -48,7 +48,7 @@ const CourseDetails = () => {
     toast.success("Course Added To Cart");
   };
 
-  console.log(showMap);
+  
   return (
     <div className=" my-5">
       <div className="container">
@@ -127,14 +127,14 @@ const CourseDetails = () => {
                     </div>
                   </div>
 
-                  <div className="mt-3 text-center px-4">
+                  {/* <div className="mt-3 text-center px-4">
                     <button
                       onClick={() => setShowMap(!showMap)}
                       className="btn btn-warning"
                     >
                       {!showMap ? "Find Course Location" : "Hide Google Map"}
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </>
             ) : (
