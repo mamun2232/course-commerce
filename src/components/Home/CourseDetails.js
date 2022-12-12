@@ -142,44 +142,18 @@ const CourseDetails = () => {
             )}
           </div>
         </div>
-        {/* {showMap && (
-          <>
-            <div
-              style={{ width: 1030 }}
-              className=" card d-none d-md-none d-sm-none d-lg-block p-3 mt-5"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29523.01869715693!2d91.82962625!3d22.33937675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8a71c5c3451%3A0x8145d1408572eb24!2sKotwali%2C%20Chattogram!5e0!3m2!1sen!2sbd!4v1670164141099!5m2!1sen!2sbd"
-                width={"1000"}
-                height="450"
-                loading="lazy"
-              ></iframe>
-            </div>
-            <div
-              style={{ width: 630 }}
-              className=" card d-none d-sm-none d-md-block d-lg-none p-3 mt-5"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29523.01869715693!2d91.82962625!3d22.33937675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8a71c5c3451%3A0x8145d1408572eb24!2sKotwali%2C%20Chattogram!5e0!3m2!1sen!2sbd!4v1670164141099!5m2!1sen!2sbd"
-                width={"600"}
-                height="450"
-                loading="lazy"
-              ></iframe>
-            </div>
+        <div className="cardTop my-4"></div>
+        <div>
+          <h5 className="font-weight-bold">Course About:</h5> <p>{course?.course?.course?.about}</p>
+        </div>
+        <div className="mt-4">
+          <h5 className="font-weight-bold">Course Goal:</h5> <p>{course?.course?.course?.goal}</p>
+        </div>
+        <div className="mt-4">
+          <h5 className="font-weight-bold">Course Mession:</h5> <p>{course?.course?.course?.mission}</p>
+        </div>
 
-            <div
-              style={{ width: 330 }}
-              className="d-sm-block d-md-none d-lg-none card p-3 mt-5"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29523.01869715693!2d91.82962625!3d22.33937675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8a71c5c3451%3A0x8145d1408572eb24!2sKotwali%2C%20Chattogram!5e0!3m2!1sen!2sbd!4v1670164141099!5m2!1sen!2sbd"
-                width={"300"}
-                height="450"
-                loading="lazy"
-              ></iframe>
-            </div>
-          </>
-        )} */}
+
       </div>
     </div>
   );

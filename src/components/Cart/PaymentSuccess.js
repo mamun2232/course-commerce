@@ -63,7 +63,6 @@ const PaymentSuccess = () => {
     
   }, []);
   
-  console.log(user);
   return (
     <div className="my-5">
       <div className="contianer">

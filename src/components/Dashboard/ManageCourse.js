@@ -11,9 +11,12 @@ const ManageCourse = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-
+  const [id, setId] = useState("");
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (id) => {
+    setShow(true);
+    setId(id);
+  };
   useEffect(() => {
     setLoading(true);
     fetch("https://course-commerce-back-end.vercel.app/api/v1/courses/course")
@@ -26,8 +29,7 @@ const ManageCourse = () => {
       });
   }, [show]);
 
-  const deleteHenedler = (id) => {
-    console.log(id);
+  const deleteHenedler = () => {
     fetch(
       `https://course-commerce-back-end.vercel.app/api/v1/courses/course/${id}`,
       {
@@ -37,6 +39,7 @@ const ManageCourse = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          setId("");
           swal({
             title: "Course Delete Successfull",
             text: "Thank you Sir",
@@ -45,6 +48,7 @@ const ManageCourse = () => {
           });
           handleClose();
         } else {
+          setId("");
         }
       });
   };
@@ -56,80 +60,84 @@ const ManageCourse = () => {
       <div data-aos="fade-right" class="row my-5">
         <h3 class="fs-4 mb-3">Manage Course</h3>
         <div class="col">
-        <div className="overflow-auto">
-        <table class="table bg-white rounded shadow-sm  table-hover">
-            <thead>
-              <tr>
-                <th scope="col">NAME</th>
-                <th scope="col">CATEGORY</th>
-                <th scope="col">PRICE</th>
-                <th scope="col">STOCK</th>
-                <th scope="col">DETAILS</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {course?.map((course) => (
-                <tr key={course?._id}>
-                  <th scope="row">{course?.name}</th>
-                  <td>{course?.category}</td>
-                  <td>{course?.price}</td>
-                  <td>{course?.Stock}</td>
+          <div className="overflow-auto">
+            <table class="table bg-white rounded shadow-sm  table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">NAME</th>
+                  <th scope="col">CATEGORY</th>
+                  <th scope="col">PRICE</th>
+                  <th scope="col">STOCK</th>
+                  <th scope="col">DETAILS</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {course?.map((course) => (
+                  <tr key={course?._id}>
+                    <th scope="row">{course?.name}</th>
+                    <td>{course?.category}</td>
+                    <td>{course?.price}</td>
+                    <td>{course?.Stock}</td>
 
-                  <td>
-                    <button
-                      onClick={() => navigate(`/course/details/${course?._id}`)}
-                      className="btn btn-warning"
-                    >
-                      Detalils
-                    </button>
-                  </td>
-                  <td>
-                    <Modal show={show} onHide={handleClose}>
-                      <div className=" p-5">
-                        <Modal.Title className="text-center">
-                          Are You Sure Delete?
-                        </Modal.Title>
+                    <td>
+                      <button
+                        onClick={() =>
+                          navigate(`/course/details/${course?._id}`)
+                        }
+                        className="btn btn-warning"
+                      >
+                        Detalils
+                      </button>
+                    </td>
+                    <td>
+                      <Modal show={show} onHide={handleClose}>
+                        <div className=" p-5">
+                          <Modal.Title className="text-center">
+                            Are You Sure Delete?
+                          </Modal.Title>
 
-                        <div className=" d-flex justify-content-center mt-2">
-                          <Button
-                            // variant="secondary"
-                            className="btn btn-warning px-5"
-                            onClick={() => deleteHenedler(course?._id)}
-                          >
-                            ok
-                          </Button>
+                          <div className=" d-flex justify-content-center mt-2">
+                            <Button
+                              // variant="secondary"
+                              className="btn btn-warning px-5"
+                              onClick={() => deleteHenedler()}
+                            >
+                              ok
+                            </Button>
+                          </div>
                         </div>
-                      </div>
-                      {/* <Modal.Header closeButton> */}
+                        {/* <Modal.Header closeButton> */}
 
-                      {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
+                        {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
 
-                      {/* <Modal.Footer>
+                        {/* <Modal.Footer>
          
         </Modal.Footer> */}
-                    </Modal>
-                    <span onClick={() => handleShow()} className="delete-btn">
-                      <AiFillDelete />
-                    </span>
+                      </Modal>
+                      <span
+                        onClick={() => handleShow(course?._id)}
+                        className="delete-btn"
+                      >
+                        <AiFillDelete />
+                      </span>
 
-                    <span
-                      onClick={() =>
-                        navigate(
-                          `/dashboard/manageCourse/update/${course?._id}`
-                        )
-                      }
-                      className="delete-btn px-2"
-                    >
-                      <FaRegEdit />
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                      <span
+                        onClick={() =>
+                          navigate(
+                            `/dashboard/manageCourse/update/${course?._id}`
+                          )
+                        }
+                        className="delete-btn px-2"
+                      >
+                        <FaRegEdit />
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-         
         </div>
       </div>
     </div>

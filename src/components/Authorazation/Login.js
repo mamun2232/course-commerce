@@ -1,4 +1,6 @@
-import React from "react";
+import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
@@ -7,15 +9,23 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import Loading from "../Utilites/Loading"
+import Loading from "../Utilites/Loading";
+import { sendPasswordResetEmail } from "firebase/auth";
 const Login = () => {
   const navigete = useNavigate();
   const location = useLocation();
+  const [email, setEmail] = useState("");
   let from = location.state?.from?.pathname || "/";
   const [signInWithEmailAndPassword, users, loading, errorss] =
     useSignInWithEmailAndPassword(auth);
   const [user, loadings, error] = useAuthState(auth);
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  };
   const {
     register,
     formState: { errors },
@@ -45,8 +55,8 @@ const Login = () => {
     console.log(data);
   };
 
-  if(loading || loadings){
-   return <Loading/>
+  if (loading || loadings) {
+    return <Loading />;
   }
 
   if (user) {
@@ -56,8 +66,16 @@ const Login = () => {
   let errorMessage;
   if (error || errorss) {
     errorMessage = error?.message || errorss?.message;
-    toast.error(errorMessage);
+    // toast.error(errorMessage);
   }
+
+  const passwordResetHendeler = () => {
+    sendPasswordResetEmail(auth, email).then(() => {
+      toast.success("Reset password send email");
+      handleClose();
+    });
+  };
+
   return (
     <div className="my-5 container">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -115,17 +133,53 @@ const Login = () => {
                   value="Login"
                 />
               </div>
-              <p className=" text-end text-primary mt-2 pinter">Forgate Password?</p>
+              <p className="text-danger">{errorMessage}</p>
+              <p
+                onClick={() => handleShow()}
+                className=" text-end text-primary mt-2 pinter"
+              >
+                Forgate Password?
+              </p>
             </div>
           </div>
         </div>
       </form>
 
       <p className="text-center mt-2">
-        <span onClick={() => navigete("/signUp")} className="text-primary pinter">
+        <span
+          onClick={() => navigete("/signUp")}
+          className="text-primary pinter"
+        >
           Create an Account
         </span>{" "}
       </p>
+
+      <Modal show={show} onHide={handleClose}>
+        <div className="p-3 ">
+          <div className="mt-4">
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Email"
+              className="EmailInput"
+              name="email"
+              id="email"
+              required
+            />
+          </div>
+
+          <div className=" d-flex justify-content-center mt-2">
+            <Button
+              disabled={!email}
+              // variant="secondary"
+              className="btn btn-warning px-5 w-full"
+              onClick={() => passwordResetHendeler()}
+            >
+              Reset Password
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

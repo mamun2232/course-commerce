@@ -28,6 +28,9 @@ const AddCourser = () => {
     // myForm.append("googleMap", data.googleMap);
     // myForm.append("user", userId);
     myForm.append("images", productPictue);
+    myForm.append("about", data.about);
+    myForm.append("mission", data.mission);
+    myForm.append("goal", data.goal);
     await axios({
       method: "post",
       url: "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
@@ -254,29 +257,74 @@ const AddCourser = () => {
                 )}
               </label>
             </div>
-            {/* <div className="col-lg-6">
-              <span className="label">Google Map My Location Link</span>
+            <div className="col-lg-6">
+              <span className="label">Course About</span>
               <textarea
-                {...register("googleMap", {
+                {...register("about", {
                   required: {
                     value: true,
-                    message: "googleMap Live Link is Required",
+                    message: "about is Required",
                   },
                 })}
-                placeholder="GoogleMap Live Link"
-                className="shippingInput h-75"
-                name="googleMap"
-                id="googleMap"
-                
+                placeholder="About"
+                className="shippingInput h-50"
+                name="about"
+                id="about"
               />
               <label class="label">
-                {errors.googleMap?.type === "required" && (
+                {errors.about?.type === "required" && (
                   <span className="text-danger">
-                    {errors.googleMap.message}
+                    {errors.about.message}
                   </span>
                 )}
               </label>
-            </div> */}
+            </div>
+          </div>
+
+          <div className="row mt-3">
+            <div className="col-lg-6 ">
+              <span className="label">Course Goal</span>
+              <input
+                {...register("goal", {
+                  required: {
+                    value: true,
+                    message: "goal is Required",
+                  },
+                })}
+                placeholder="Goal"
+                className="shippingInput"
+                type="text"
+                name="goal"
+                id="goal"
+              />
+              <label class="label">
+                {errors.goal?.type === "required" && (
+                  <span className="text-danger">{errors.goal.message}</span>
+                )}
+              </label>
+            </div>
+            <div className="col-lg-6">
+              <span className="label">Course Mession</span>
+              <input
+                {...register("mission", {
+                  required: {
+                    value: true,
+                    message: "Mession is Required",
+                  },
+                })}
+                placeholder="Course Title"
+                className="shippingInput"
+                name="mission"
+                id="mission"
+              />
+              <label class="label">
+                {errors.mission?.type === "required" && (
+                  <span className="text-danger">
+                    {errors.mission.message}
+                  </span>
+                )}
+              </label>
+            </div>
           </div>
           
 

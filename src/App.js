@@ -29,6 +29,7 @@ import RequreAdmin from "./components/Authorazation/RequreAdmin";
 import Countact from "./components/Contect/Countact";
 import Contect from "./components/Dashboard/Contect";
 import ContectDetails from "./components/Dashboard/ContectDetails";
+import PaymentCancle from "./components/Cart/PaymentCancle";
 function App() {
   return (
     <div className="">
@@ -57,6 +58,10 @@ function App() {
         <Route
           path="/myCart/chackout/review/payment/success"
           element={<PaymentSuccess />}
+        ></Route>
+        <Route
+          path="/myCart/chackout/review/payment/fail"
+          element={<PaymentCancle />}
         ></Route>
         <Route
           path="/dashboard"

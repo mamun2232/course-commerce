@@ -10,7 +10,6 @@ const Review = () => {
   const discount = useSelector((state) => state.shipping.discount);
   const navigate = useNavigate();
 
- 
   return (
     <div className="my-5">
       <h5>Order History</h5>
@@ -70,17 +69,21 @@ const Review = () => {
           <p>{totalCost} TK</p>
         </div>
       </div>
-     
-       
-      <div className='my-5  d-flex justify-content-end '>
 
-      <form action={`https://course-commerce-back-end.vercel.app/pay?price=${totalCost}`} method="post">
-    <input className="btn btn-warning px-5" type="submit" value="Pay With Paypal"/>
-  </form>
-               {/* if you need to stripe payment get way jast uncomment this button  */}
-                  {/* <button onClick={()=>navigate("/myCart/chackout/review/payment")}  className='btn btn-warning px-5'>Confrom Order</button> */}
-
-            </div>
+      <div className="my-5  d-flex justify-content-end ">
+        <form
+          action={`https://course-commerce-back-end.vercel.app/pay?price=${totalCost}`}
+          method="post"
+        >
+          <input
+            className="btn btn-warning px-5"
+            type="submit"
+            value="Pay With Paypal"
+          />
+        </form>
+        {/* if you need to stripe payment get way jast uncomment this button  */}
+        {/* <button onClick={()=>navigate("/myCart/chackout/review/payment")}  className='btn btn-warning px-5'>Confrom Order</button> */}
+      </div>
     </div>
   );
 };
