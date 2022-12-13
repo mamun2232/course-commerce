@@ -17,7 +17,10 @@ const AddCourser = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data)
+   
+    const lat =  parseFloat(data.courseLocationLat)
+    const log =  parseFloat(data.courseLocation)
+    console.log(lat , log)
     const myForm = new FormData();
     myForm.append("name", data.name);
     myForm.append("category", data.category);
@@ -31,6 +34,8 @@ const AddCourser = () => {
     myForm.append("about", data.about);
     myForm.append("mission", data.mission);
     myForm.append("goal", data.goal);
+    myForm.append("lat", lat);
+    myForm.append("log", log);
     await axios({
       method: "post",
       url: "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
@@ -325,6 +330,51 @@ const AddCourser = () => {
                 )}
               </label>
             </div>
+          </div>
+          <div className="row mt-3">
+            <div className="col-lg-6 ">
+              <span className="label">Add Your Google Langicute code</span>
+              <input
+                {...register("courseLocationLat", {
+                  required: {
+                    value: true,
+                    message: "Code is Required",
+                  },
+                })}
+                placeholder="Enter Your Carrent Loaction Code"
+                className="shippingInput"
+                type="text"
+                name="courseLocationLat"
+                id="courseLocationLat"
+              />
+              <label class="label">
+                {errors.courseLocationLat?.type === "required" && (
+                  <span className="text-danger">{errors.courseLocationLat.message}</span>
+                )}
+              </label>
+            </div>
+            <div className="col-lg-6 ">
+              <span className="label">Add Your Google Laticite code</span>
+              <input
+                {...register("courseLocation", {
+                  required: {
+                    value: true,
+                    message: "Code is Required",
+                  },
+                })}
+                placeholder="Enter Your Carrent Loaction Code"
+                className="shippingInput"
+                type="text"
+                name="courseLocation"
+                id="courseLocation"
+              />
+              <label class="label">
+                {errors.courseLocation?.type === "required" && (
+                  <span className="text-danger">{errors.courseLocation.message}</span>
+                )}
+              </label>
+            </div>
+            
           </div>
           
 

@@ -11,6 +11,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Utilites/Loading";
 import { sendPasswordResetEmail } from "firebase/auth";
+import { AiOutlineMail } from "react-icons/ai";
+import { RiLockPasswordFill } from "react-icons/ri";
 const Login = () => {
   const navigete = useNavigate();
   const location = useLocation();
@@ -52,7 +54,7 @@ const Login = () => {
           toast.error(result.message);
         }
       });
-    console.log(data);
+   
   };
 
   if (loading || loadings) {
@@ -79,11 +81,12 @@ const Login = () => {
   return (
     <div className="my-5 container">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="card loginContainer shadow-sm mx-auto p-4 ">
+        <div className="card loginContainer shadow-sm mx-auto p-4  ">
           <div>
             <h3 className="text-center">Login</h3>
 
-            <div className="mt-4">
+            <div className="mt-4 position-relative">
+              <label htmlFor="email">Email</label>
               <input
                 {...register("email", {
                   required: {
@@ -93,7 +96,7 @@ const Login = () => {
                 })}
                 type="email"
                 placeholder="Email"
-                className="EmailInput"
+                className="EmailInput px-5"
                 name="email"
                 id="email"
               />
@@ -102,9 +105,15 @@ const Login = () => {
                   <span className="text-danger">{errors.email.message}</span>
                 )}
               </label>
+              <div className=" py-0 px-2 position-absolute top-50 ">
+              <span className="icons pt-1">
+                <AiOutlineMail />
+              </span>
             </div>
-
-            <div className="mt-4">
+            </div>
+            
+            <div className="mt-4 position-relative">
+              <label htmlFor="email">Password</label>
               <input
                 {...register("password", {
                   required: {
@@ -114,7 +123,7 @@ const Login = () => {
                 })}
                 type="password"
                 placeholder="Password"
-                className="EmailInput"
+                className="EmailInput px-5"
                 name="password"
                 id="password"
               />
@@ -123,6 +132,11 @@ const Login = () => {
                   <span className="text-danger">{errors.password.message}</span>
                 )}
               </label>
+            </div>
+            <div className="pt-3 py-0 px-2 position-absolute top-50 ">
+              <span className="icons pt-1">
+                <RiLockPasswordFill />
+              </span>
             </div>
 
             <div>

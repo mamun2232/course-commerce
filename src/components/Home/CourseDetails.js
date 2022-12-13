@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../Redux/Slice/cartSlice";
 import { fetchSinglecourse } from "../Redux/Slice/singleCourseSlice";
 import Loading from "../Utilites/Loading";
+import { TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
 const CourseDetails = () => {
   const [quantity, setquantity] = useState(1);
-  const [showMap, setShowMap] = useState(false);
+
+  const Zooms = 9;
+
   const { id } = useParams();
   const disPatch = useDispatch();
   const course = useSelector((state) => state.course);
-  const position = [22.337153840738438, 91.83031289549679];
+
   useEffect(() => {
     disPatch(fetchSinglecourse(id));
   }, [id]);
+
+  // if(course){
+  //   // setCenter([...course?.course?.course?.courseLocation])
+
+  // }
 
   const increasequantity = () => {
     setquantity(quantity + 1);
@@ -29,8 +39,7 @@ const CourseDetails = () => {
     }
   };
 
-  console.log(course);
-
+  
   const addedToCartHendeler = () => {
     const totalPrice =
       parseInt(quantity) * parseInt(course?.course?.course?.price);
@@ -48,7 +57,19 @@ const CourseDetails = () => {
     toast.success("Course Added To Cart");
   };
 
-  
+  const maptiler = {
+    url: "https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=GenbiKMP4GMLsKvVjZHt",
+    attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`,
+  };
+
+  const markerIcon = new L.Icon({
+    iconUrl:
+      "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png",
+    iconSize: [35, 45],
+    iconAnchor: [17, 46],
+    popupAnchor: [0, -46],
+  });
+ 
   return (
     <div className=" my-5">
       <div className="container">
@@ -143,17 +164,54 @@ const CourseDetails = () => {
           </div>
         </div>
         <div className="cardTop my-4"></div>
-        <div>
-          <h5 className="font-weight-bold">Course About:</h5> <p>{course?.course?.course?.about}</p>
+        <div className="row">
+          <div className="col-8">
+            <div>
+              <h5 className="font-weight-bold">Course About:</h5>{" "}
+              <p>{course?.course?.course?.about}</p>
+            </div>
+            <div className="mt-4">
+              <h5 className="font-weight-bold">Course Goal:</h5>{" "}
+              <p>{course?.course?.course?.goal}</p>
+            </div>
+            <div className="mt-4">
+              <h5 className="font-weight-bold">Course Mession:</h5>{" "}
+              <p>{course?.course?.course?.mission}</p>
+            </div>
+          </div>
+          <div className="col-4  ">
+            {!course?.course?.course?.lat && !course?.course?.course?.log ? (
+              <>
+                <Loading />
+                <p className="text-center">Location Not Found</p>
+              </>
+            ) : (
+              <MapContainer
+                center={[
+                  course?.course?.course?.lat,
+                  course?.course?.course?.log,
+                ]}
+                zoom={Zooms}
+              >
+                <TileLayer
+                  url={maptiler.url}
+                  attribution={maptiler.attribution}
+                />
+                <Marker
+                  icon={markerIcon}
+                  position={[
+                    course?.course?.course?.lat,
+                    course?.course?.course?.log,
+                  ]}
+                >
+                  <Popup>
+                    Admin Course Location <br /> Here.
+                  </Popup>
+                </Marker>
+              </MapContainer>
+            )}
+          </div>
         </div>
-        <div className="mt-4">
-          <h5 className="font-weight-bold">Course Goal:</h5> <p>{course?.course?.course?.goal}</p>
-        </div>
-        <div className="mt-4">
-          <h5 className="font-weight-bold">Course Mession:</h5> <p>{course?.course?.course?.mission}</p>
-        </div>
-
-
       </div>
     </div>
   );
