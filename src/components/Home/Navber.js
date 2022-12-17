@@ -45,7 +45,12 @@ const Navber = () => {
               >
                 Privacy Policy
               </span>
-              <span onClick={termshandleShow} className="mt-2 text-secondary pinter px-2">Terms and Condation</span>
+              <span
+                onClick={termshandleShow}
+                className="mt-2 text-secondary pinter px-2"
+              >
+                Terms and Condation
+              </span>
             </Nav>
             <div className="d-flex gap-3">
               <span onClick={() => navigate("/myCart")} className="myCart">

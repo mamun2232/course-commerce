@@ -10,6 +10,9 @@ const AddCourser = () => {
   const navigate = useNavigate();
   // const disPatch = useDispatch();
   const [productPictue, setProductPicture] = useState("");
+  const [boxOneImage, setboxOneImage] = useState("");
+  const [boxTwoImage, setTowOneImage] = useState("");
+  const [boxThreeImage, setThreeeImage] = useState("");
   const {
     register,
     reset,
@@ -17,10 +20,8 @@ const AddCourser = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-   
-    const lat =  parseFloat(data.courseLocationLat)
-    const log =  parseFloat(data.courseLocation)
-    console.log(lat , log)
+    const lat = parseFloat(data.courseLocationLat);
+    const log = parseFloat(data.courseLocation);
     const myForm = new FormData();
     myForm.append("name", data.name);
     myForm.append("category", data.category);
@@ -36,9 +37,17 @@ const AddCourser = () => {
     myForm.append("goal", data.goal);
     myForm.append("lat", lat);
     myForm.append("log", log);
+    myForm.append("boxOneImage", boxOneImage);
+    myForm.append("boxOneTitle", data.boxOneTitle);
+    myForm.append("boxTwoImage", boxTwoImage);
+    myForm.append("boxTwoTitle", data.boxTwoTitle);
+    myForm.append("boxThreeImage", boxThreeImage);
+    myForm.append("boxThreeTitle", data.boxThreeTitle);
+    console.log(data);
+
     await axios({
       method: "post",
-      url: "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
+      url: "http://localhost:5000/api/v1/courses/course",
       data: myForm,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -47,6 +56,9 @@ const AddCourser = () => {
     })
       .then((res) => {
         setProductPicture("");
+        setboxOneImage("");
+        setTowOneImage("");
+        setThreeeImage("");
         reset();
         swal({
           title: "Course Add Successfull",
@@ -68,9 +80,37 @@ const AddCourser = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
+  const boxOneImagePictureHendeler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setboxOneImage(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+  const boxTwoImagePictureHendeler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setTowOneImage(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+  const boxThreeImagePictureHendeler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setThreeeImage(reader.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
     <div className="my-5">
-      <div data-aos="fade-right"  className="card p-3">
+      <div data-aos="fade-right" className="card p-3">
         <h5>Add Course</h5>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row mt-5">
@@ -278,9 +318,7 @@ const AddCourser = () => {
               />
               <label class="label">
                 {errors.about?.type === "required" && (
-                  <span className="text-danger">
-                    {errors.about.message}
-                  </span>
+                  <span className="text-danger">{errors.about.message}</span>
                 )}
               </label>
             </div>
@@ -324,9 +362,7 @@ const AddCourser = () => {
               />
               <label class="label">
                 {errors.mission?.type === "required" && (
-                  <span className="text-danger">
-                    {errors.mission.message}
-                  </span>
+                  <span className="text-danger">{errors.mission.message}</span>
                 )}
               </label>
             </div>
@@ -349,7 +385,9 @@ const AddCourser = () => {
               />
               <label class="label">
                 {errors.courseLocationLat?.type === "required" && (
-                  <span className="text-danger">{errors.courseLocationLat.message}</span>
+                  <span className="text-danger">
+                    {errors.courseLocationLat.message}
+                  </span>
                 )}
               </label>
             </div>
@@ -370,13 +408,220 @@ const AddCourser = () => {
               />
               <label class="label">
                 {errors.courseLocation?.type === "required" && (
-                  <span className="text-danger">{errors.courseLocation.message}</span>
+                  <span className="text-danger">
+                    {errors.courseLocation.message}
+                  </span>
                 )}
               </label>
             </div>
-            
           </div>
-          
+          <p className="mt-3">
+            Dear Admin, Google Lengituate or latiuate put the code very
+            carefully in the input field.Do Not Put Any alphabet or any fullstap
+            comma in the code.
+          </p>
+          <div className="mt-5">
+            <div className="  row ">
+              <div className="col-lg-4 col-12 card p-3 ">
+                <span className="label">box one image(optional)</span>
+                <input
+                  {...register("boxOneImage", {
+                    // required: {
+                    //   value: true,
+                    //   message: "images is Required",
+                    // },
+                  })}
+                  onChange={(e) => boxOneImagePictureHendeler(e)}
+                  type="file"
+                  name="image-uplode"
+                  id="boxOneImage"
+                  hidden
+                  placeholder="images"
+                  className="shippingInput"
+
+                  // id="images"
+                />
+                <label htmlFor={!boxOneImage && "boxOneImage"} className=" ">
+                  <div>
+                    {!boxOneImage && (
+                      <div className="add-image">
+                        <div className=" ">
+                          <span className="text-6xl text-[#EC255A]">
+                            <MdAddPhotoAlternate />
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    {boxOneImage && (
+                      <div className="add-image">
+                        <div className="mt-3 d-relative">
+                          <img
+                            className="h-44 w-72 p-1 rounded-lg"
+                            src={boxOneImage}
+                            alt="productPicure"
+                          />
+                          <span
+                            onClick={() => setboxOneImage("")}
+                            className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                          >
+                            <TiDelete />
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </label>
+
+                <span className="label mt-1">Add Someting (optional)</span>
+                <input
+                  {...register("boxOneTitle", {
+                    // required: {
+                    //   value: true,
+                    //   message: "Code is Required",
+                    // },
+                  })}
+                  placeholder="title"
+                  className="shippingInput"
+                  type="text"
+                  name="boxOneTitle"
+                  id="boxOneTitle"
+                />
+              </div>
+              <div className="col-lg-4 col-12 card p-3 ">
+                <span className="label">box Two image(optional)</span>
+                <input
+                  {...register("boxTwoImage", {
+                    // required: {
+                    //   value: true,
+                    //   message: "images is Required",
+                    // },
+                  })}
+                  onChange={(e) => boxTwoImagePictureHendeler(e)}
+                  type="file"
+                  name="image-uplode"
+                  id="boxTwoImage"
+                  hidden
+                  placeholder="images"
+                  className="shippingInput"
+
+                  // id="images"
+                />
+                <label htmlFor={!boxTwoImage && "boxTwoImage"} className=" ">
+                  <div>
+                    {!boxTwoImage && (
+                      <div className="add-image">
+                        <div className=" ">
+                          <span className="text-6xl text-[#EC255A]">
+                            <MdAddPhotoAlternate />
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    {boxTwoImage && (
+                      <div className="add-image">
+                        <div className="mt-3 d-relative">
+                          <img
+                            className="h-44 w-72 p-1 rounded-lg"
+                            src={boxTwoImage}
+                            alt="productPicure"
+                          />
+                          <span
+                            onClick={() => setTowOneImage("")}
+                            className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                          >
+                            <TiDelete />
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </label>
+
+                <span className="label mt-1">Add Someting (optional)</span>
+                <input
+                  {...register("boxTwoTitle", {
+                    // required: {
+                    //   value: true,
+                    //   message: "Code is Required",
+                    // },
+                  })}
+                  placeholder="title"
+                  className="shippingInput"
+                  type="text"
+                  name="boxTwoTitle"
+                  id="boxTwoTitle"
+                />
+              </div>
+              <div className="col-lg-4 col-12 card p-3 ">
+                <span className="label">box Three image(optional)</span>
+                <input
+                  {...register("boxThreeImage", {
+                    // required: {
+                    //   value: true,
+                    //   message: "images is Required",
+                    // },
+                  })}
+                  onChange={(e) => boxThreeImagePictureHendeler(e)}
+                  type="file"
+                  name="image-uplode"
+                  id="boxThreeImage"
+                  hidden
+                  placeholder="images"
+                  className="shippingInput"
+
+                  // id="images"
+                />
+                <label
+                  htmlFor={!boxThreeImage && "boxThreeImage"}
+                  className=" "
+                >
+                  <div>
+                    {!boxThreeImage && (
+                      <div className="add-image">
+                        <div className=" ">
+                          <span className="text-6xl text-[#EC255A]">
+                            <MdAddPhotoAlternate />
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    {boxThreeImage && (
+                      <div className="add-image">
+                        <div className="mt-3 d-relative">
+                          <img
+                            className="h-44 w-72 p-1 rounded-lg"
+                            src={boxThreeImage}
+                            alt="productPicure"
+                          />
+                          <span
+                            onClick={() => setThreeeImage("")}
+                            className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                          >
+                            <TiDelete />
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </label>
+
+                <span className="label mt-1">Add Someting (optional)</span>
+                <input
+                  {...register("boxThreeTitle", {
+                    // required: {
+                    //   value: true,
+                    //   message: "Code is Required",
+                    // },
+                  })}
+                  placeholder="title"
+                  className="shippingInput"
+                  type="text"
+                  name="boxThreeTitle"
+                  id="boxThreeTitle"
+                />
+              </div>
+            </div>
+          </div>
 
           <div className="my-5  d-flex justify-content-center ">
             <input type="submit" value="Add Course" className="myButton" />

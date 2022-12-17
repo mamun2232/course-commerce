@@ -23,10 +23,7 @@ const CourseDetails = () => {
     disPatch(fetchSinglecourse(id));
   }, [id]);
 
-  // if(course){
-  //   // setCenter([...course?.course?.course?.courseLocation])
 
-  // }
 
   const increasequantity = () => {
     setquantity(quantity + 1);
@@ -38,6 +35,7 @@ const CourseDetails = () => {
       alert("sorry");
     }
   };
+ 
 
   
   const addedToCartHendeler = () => {
@@ -211,6 +209,25 @@ const CourseDetails = () => {
               </MapContainer>
             )}
           </div>
+        </div>
+
+        <div className=" row">
+          <div className="col-12 col-lg-4 card p-3">
+            <img className="w-full h-50 rounded" src={!course?.course?.course?.boxTwoImage?.url} alt="" />
+            <p className="">{course?.course?.course?.boxTwoTitle}</p>
+
+          </div>
+          <div className="col-12 col-lg-4 card p-3">
+            <img className="w-full h-50 rounded" src={!course?.course?.course?.boxOneImage?.url} alt="" />
+            <p className="">{course?.course?.course?.boxTwoTitle}</p>
+
+          </div>
+          <div className="col-12 col-lg-4 card p-3">
+            <img className="w-full h-50 rounded" src={!course?.course?.course?.boxThreeImage?.url} alt="" />
+            <p className="">{course?.course?.course?.boxThreeTitle}</p>
+
+          </div>
+
         </div>
       </div>
     </div>
