@@ -23,8 +23,6 @@ const CourseDetails = () => {
     disPatch(fetchSinglecourse(id));
   }, [id]);
 
-
-
   const increasequantity = () => {
     setquantity(quantity + 1);
   };
@@ -35,9 +33,7 @@ const CourseDetails = () => {
       alert("sorry");
     }
   };
- 
 
-  
   const addedToCartHendeler = () => {
     const totalPrice =
       parseInt(quantity) * parseInt(course?.course?.course?.price);
@@ -67,7 +63,7 @@ const CourseDetails = () => {
     iconAnchor: [17, 46],
     popupAnchor: [0, -46],
   });
- 
+
   return (
     <div className=" my-5">
       <div className="container">
@@ -162,6 +158,70 @@ const CourseDetails = () => {
           </div>
         </div>
         <div className="cardTop my-4"></div>
+
+        <div className="row py-4">
+          <div
+            className={`${
+              course?.course?.course?.boxOneImage?.url ||
+              course?.course?.course?.boxOneTitle !== ""
+                ? "card col-lg-4  col-12 p-3 "
+                : ""
+            }    `}
+          >
+            {course?.course?.course?.boxOneImage?.url && (
+              <img
+                className="w-full imagess rounded"
+                src={course?.course?.course?.boxOneImage?.url}
+                alt=""
+              />
+            )}
+
+            {course?.course?.course?.boxOneTitle && (
+              <p className="">{course?.course?.course?.boxOneTitle}</p>
+            )}
+          </div>
+
+          <div
+            className={`${
+              course?.course?.course?.boxTwoImage?.url ||
+              course?.course?.course?.boxTwoTitle !== ""
+                ? "card col-lg-4  col-12 p-3"
+                : ""
+            }  `}
+          >
+            {course?.course?.course?.boxTwoImage?.url && (
+              <img
+                className="w-full imagess rounded"
+                src={course?.course?.course?.boxTwoImage?.url}
+                alt=""
+              />
+            )}
+            {course?.course?.course?.boxTwoTitle && (
+              <p className="">{course?.course?.course?.boxTwoTitle}</p>
+            )}
+          </div>
+
+          <div
+            className={`${
+              course?.course?.course?.boxThreeImage?.url ||
+              course?.course?.course?.boxThreeTitle !== ""
+                ? "card col-lg-4  col-12 p-3"
+                : "no"
+            } `}
+          >
+            {course?.course?.course?.boxThreeImage?.url && (
+              <img
+                className="w-full imagess rounded"
+                src={course?.course?.course?.boxThreeImage?.url}
+                alt=""
+              />
+            )}
+            {course?.course?.course?.boxThreeTitle && (
+              <p className="">{course?.course?.course?.boxThreeTitle}</p>
+            )}
+          </div>
+        </div>
+        
         <div className="row">
           <div className="col-8">
             <div>
@@ -209,25 +269,6 @@ const CourseDetails = () => {
               </MapContainer>
             )}
           </div>
-        </div>
-
-        <div className=" row">
-          <div className="col-12 col-lg-4 card p-3">
-            <img className="w-full h-50 rounded" src={!course?.course?.course?.boxTwoImage?.url} alt="" />
-            <p className="">{course?.course?.course?.boxTwoTitle}</p>
-
-          </div>
-          <div className="col-12 col-lg-4 card p-3">
-            <img className="w-full h-50 rounded" src={!course?.course?.course?.boxOneImage?.url} alt="" />
-            <p className="">{course?.course?.course?.boxTwoTitle}</p>
-
-          </div>
-          <div className="col-12 col-lg-4 card p-3">
-            <img className="w-full h-50 rounded" src={!course?.course?.course?.boxThreeImage?.url} alt="" />
-            <p className="">{course?.course?.course?.boxThreeTitle}</p>
-
-          </div>
-
         </div>
       </div>
     </div>

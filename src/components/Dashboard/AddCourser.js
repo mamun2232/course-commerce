@@ -43,11 +43,11 @@ const AddCourser = () => {
     myForm.append("boxTwoTitle", data.boxTwoTitle);
     myForm.append("boxThreeImage", boxThreeImage);
     myForm.append("boxThreeTitle", data.boxThreeTitle);
-    console.log(data);
+    
 
     await axios({
       method: "post",
-      url: "http://localhost:5000/api/v1/courses/course",
+      url: "https://course-commerce-back-end.vercel.app/api/v1/courses/course",
       data: myForm,
       headers: {
         "Content-Type": "multipart/form-data",
